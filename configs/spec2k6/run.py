@@ -148,7 +148,7 @@ multiprocesses = []
 numThreads = 1
 
 (CPUClass, test_mem_mode, FutureClass) = Simulation.setCPUClass(options)
-CPUClass.clock = '2.0GHz'
+CPUClass.clock = '1.0GHz'
 CPUClass.numThreads = numThreads
 
 multiprocesses.append(process)

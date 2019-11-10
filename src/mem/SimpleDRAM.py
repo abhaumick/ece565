@@ -65,7 +65,7 @@ class SimpleDRAM(AbstractMemory):
     # the physical organisation of the DRAM
     lines_per_rowbuffer = Param.Unsigned(64, "Row buffer size in cache lines")
     ranks_per_channel = Param.Unsigned(2, "Number of ranks per channel")
-    banks_per_rank = Param.Unsigned(8, "Number of banks per rank")
+    banks_per_rank = Param.Unsigned(16, "Number of banks per rank")
 
     # the basic configuration of the controller architecture
     write_buffer_size = Param.Unsigned(32, "Number of read queue entries")
