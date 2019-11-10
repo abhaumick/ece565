@@ -66,7 +66,9 @@ execfile(os.path.join(config_root, "ruby", "Ruby.py"))
 parser = optparse.OptionParser()
 Options.addCommonOptions(parser)
 Options.addSEOptions(parser)
-Ruby.define_options(parser)
+
+if '--ruby' in sys.argv :
+   Ruby.define_options(parser)
 
 # Benchmark options
 
@@ -104,7 +106,7 @@ elif options.benchmark == 'leslie3d':
 elif options.benchmark == 'namd':
    process = spec2k6.namd
 elif options.benchmark == 'gobmk':
-   process = spec2k6.gobmk;
+   process = spec2k6.gobmk
 elif options.benchmark == 'dealII':
    process = spec2k6.dealII
 elif options.benchmark == 'soplex':
@@ -146,7 +148,7 @@ multiprocesses = []
 numThreads = 1
 
 (CPUClass, test_mem_mode, FutureClass) = Simulation.setCPUClass(options)
-CPUClass.clock = '1.0GHz'
+CPUClass.clock = '2.0GHz'
 CPUClass.numThreads = numThreads
 
 multiprocesses.append(process)
@@ -164,25 +166,36 @@ for i in xrange(np):
     else:
         system.cpu[i].workload = multiprocesses[i]
 
-options.use_map = True
-Ruby.create_system(options, system)
-assert(options.num_cpus == len(system.ruby._cpu_ruby_ports))
+if options.ruby:
+    if not (options.cpu_type == "detailed" or options.cpu_type == "timing"):
+        print >> sys.stderr, "Ruby requires TimingSimpleCPU or O3CPU!!"
+        sys.exit(1)
 
-for i in xrange(np):
-    ruby_port = system.ruby._cpu_ruby_ports[i]
+    options.use_map = True
+    Ruby.create_system(options, system)
+    assert(options.num_cpus == len(system.ruby._cpu_ruby_ports))
 
-    # Create the interrupt controller and connect its ports to Ruby
-    system.cpu[i].createInterruptController()
-    # Connect the cpu's cache ports to Ruby
-    system.cpu[i].icache_port = ruby_port.slave
-    system.cpu[i].dcache_port = ruby_port.slave
-    if buildEnv['TARGET_ISA'] == 'x86':
-        system.cpu[i].interrupts.pio = ruby_port.master
-        system.cpu[i].interrupts.int_master = ruby_port.slave
-        system.cpu[i].interrupts.int_slave = ruby_port.master
+    for i in xrange(np):
+        ruby_port = system.ruby._cpu_ruby_ports[i]
 
-        system.cpu[i].itb.walker.port = ruby_port.slave
-        system.cpu[i].dtb.walker.port = ruby_port.slave
+        # Create the interrupt controller and connect its ports to Ruby
+        # Note that the interrupt controller is always present but only
+        # in x86 does it have message ports that need to be connected
+        system.cpu[i].createInterruptController()
+
+        # Connect the cpu's cache ports to Ruby
+        system.cpu[i].icache_port = ruby_port.slave
+        system.cpu[i].dcache_port = ruby_port.slave
+        if buildEnv['TARGET_ISA'] == 'x86':
+            system.cpu[i].interrupts.pio = ruby_port.master
+            system.cpu[i].interrupts.int_master = ruby_port.slave
+            system.cpu[i].interrupts.int_slave = ruby_port.master
+            system.cpu[i].itb.walker.port = ruby_port.slave
+            system.cpu[i].dtb.walker.port = ruby_port.slave
+else:
+    system.system_port = system.membus.slave
+    system.physmem.port = system.membus.master
+    CacheConfig.config_cache(options, system)
 
 
 root = Root(full_system = False, system = system)

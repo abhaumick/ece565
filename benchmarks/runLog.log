@@ -1,0 +1,1412 @@
+
+
+Running perlbench
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:49:26
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/perlbench configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b perlbench --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+Can't open perl script "attrs.pl": No such file or directory
+hack: be nice to actually delete the event here
+Exiting @ tick 125862500 because target called exit()
+
+
+Running bzip2
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:49:26
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/bzip2 configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b bzip2 --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+hack: be nice to actually delete the event here
+Exiting @ tick 2362757000 because a thread reached the max instruction count
+
+
+Running gcc
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:49:58
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/gcc configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b gcc --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+warn: ignoring syscall rt_sigaction(4831386176, 8, ...)
+warn: ignoring syscall rt_sigaction(4831386176, 11, ...)
+warn: ignoring syscall rt_sigaction(4831386176, 4, ...)
+warn: ignoring syscall rt_sigaction(4831386176, 10, ...)
+warn: ignoring syscall rt_sigaction(4831386176, 6, ...)
+hack: be nice to actually delete the event here
+Exiting @ tick 3876852000 because a thread reached the max instruction count
+
+
+Running bwaves
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:50:31
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/bwaves configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b bwaves --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+fatal: Can't load object file /home/min/a/ece565/benchspec/CPU2006//exe/bwaves
+ @ cycle 0
+[create:build/ALPHA_MESI_CMP_directory/sim/process.cc, line 614]
+Memory Usage: 740560 KBytes
+
+
+Running gamess
+No such file or directory
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:50:32
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/gamess configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b gamess --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+unable to open "exam29.config" for reading
+fatal: can't open input file
+ @ cycle 0
+[openInputFile:build/ALPHA_MESI_CMP_directory/sim/process.cc, line 202]
+Memory Usage: 750604 KBytes
+
+
+Running mcf
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:50:32
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/mcf configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b mcf --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+fatal: Out of memory, please increase size of physical memory.
+ @ cycle 29749500
+[allocPhysPages:build/ALPHA_MESI_CMP_directory/sim/system.cc, line 308]
+Memory Usage: 746680 KBytes
+
+
+Running milc
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:50:32
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/milc configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b milc --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+fatal: Can't load object file /home/min/a/ece565/benchspec/CPU2006/433.milc//exe/milc
+ @ cycle 0
+[create:build/ALPHA_MESI_CMP_directory/sim/process.cc, line 614]
+Memory Usage: 740560 KBytes
+
+
+Running zeusmp
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:50:32
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/zeusmp configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b zeusmp --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+fatal: Out of memory, please increase size of physical memory.
+ @ cycle 0
+[allocPhysPages:build/ALPHA_MESI_CMP_directory/sim/system.cc, line 308]
+Memory Usage: 749460 KBytes
+
+
+Running gromacs
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:50:35
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/gromacs configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b gromacs --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+fatal: Can't load object file /home/min/a/ece565/benchspec/CPU2006/435.gromacs/435.gromacs//exe/gromacs
+ @ cycle 0
+[create:build/ALPHA_MESI_CMP_directory/sim/process.cc, line 614]
+Memory Usage: 740560 KBytes
+
+
+Running cactusADM
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:50:35
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/cactusADM configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b cactusADM --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+fatal: Out of memory, please increase size of physical memory.
+ @ cycle 3838028500
+[allocPhysPages:build/ALPHA_MESI_CMP_directory/sim/system.cc, line 308]
+Memory Usage: 758220 KBytes
+
+
+Running leslie3d
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:51:03
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/leslie3d configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b leslie3d --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+hack: be nice to actually delete the event here
+Exiting @ tick 4094283000 because a thread reached the max instruction count
+
+
+Running namd
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:51:37
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/namd configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b namd --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+info: Increasing stack size by one page.
+hack: be nice to actually delete the event here
+Exiting @ tick 5115092000 because a thread reached the max instruction count
+
+
+Running gobmk
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:52:12
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/gobmk configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b gobmk --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+hack: be nice to actually delete the event here
+Exiting @ tick 3936620500 because a thread reached the max instruction count
+
+
+Running dealII
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:52:51
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/dealII configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b dealII --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+info: Increasing stack size by one page.
+warn: addt/sud   f11,f23,f15: non-standard trapping mode not supported
+warn: subt/sud   f15,f23,f10: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f12: non-standard trapping mode not supported
+warn: mult/sud   f12,f12,f13: non-standard trapping mode not supported
+warn: mult/sud   f12,f13,f14: non-standard trapping mode not supported
+warn: mult/sud   f13,f10,f12: non-standard trapping mode not supported
+warn: subt/sud   f12,f10,f22: non-standard trapping mode not supported
+warn: mult/sud   f13,f10,f11: non-standard trapping mode not supported
+warn: mult/sud   f14,f22,f24: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f15: non-standard trapping mode not supported
+warn: addt/sud   f24,f11,f22: non-standard trapping mode not supported
+warn: mult/sud   f15,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f24,f27: non-standard trapping mode not supported
+warn: mult/sud   f27,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f23,f10,f12: non-standard trapping mode not supported
+warn: subt/sud   f12,f23,f11: non-standard trapping mode not supported
+warn: subt/sud   f10,f11,f13: non-standard trapping mode not supported
+warn: mult/sud   f13,f13,f14: non-standard trapping mode not supported
+warn: mult/sud   f12,f11,f13: non-standard trapping mode not supported
+warn: mult/sud   f22,f10,f11: non-standard trapping mode not supported
+warn: mult/sud   f22,f10,f14: non-standard trapping mode not supported
+warn: subt/sud   f10,f11,f14: non-standard trapping mode not supported
+warn: subt/sud   f14,f13,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f14,f15: non-standard trapping mode not supported
+warn: addt/sud   f12,f15,f0: non-standard trapping mode not supported
+warn: subt/sud   f12,f0,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f15,f22: non-standard trapping mode not supported
+warn: mult/sud   f22,f10,f24: non-standard trapping mode not supported
+warn: addt/sud   f24,f0,f27: non-standard trapping mode not supported
+warn: subt/sud   f12,f10,f13: non-standard trapping mode not supported
+warn: addt/sud   f12,f13,f11: non-standard trapping mode not supported
+warn: subt/sud   f13,f11,f14: non-standard trapping mode not supported
+warn: addt/sud   f12,f14,f17: non-standard trapping mode not supported
+warn: mult/sud   f11,f11,f12: non-standard trapping mode not supported
+warn: mult/sud   f12,f10,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f22: non-standard trapping mode not supported
+warn: mult/sud   f22,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f23: non-standard trapping mode not supported
+warn: mult/sud   f23,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f24: non-standard trapping mode not supported
+warn: mult/sud   f24,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f27: non-standard trapping mode not supported
+warn: mult/sud   f16,f27,f11: non-standard trapping mode not supported
+warn: mult/sud   f17,f13,f14: non-standard trapping mode not supported
+warn: addt/sud   f11,f14,f15: non-standard trapping mode not supported
+warn: mult/sud   f15,f12,f22: non-standard trapping mode not supported
+warn: addt/sud   f17,f22,f11: non-standard trapping mode not supported
+warn: addt/sud   f16,f11,f0: non-standard trapping mode not supported
+warn: subt/sud   f16,f0,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f12: non-standard trapping mode not supported
+warn: addt/sud   f12,f0,f10: non-standard trapping mode not supported
+warn: mult/sud   f16,f16,f12: non-standard trapping mode not supported
+warn: addt/sud   f16,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f16,f13,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f17,f14: non-standard trapping mode not supported
+warn: mult/sud   f15,f13,f10: non-standard trapping mode not supported
+warn: mult/sud   f10,f13,f11: non-standard trapping mode not supported
+warn: mult/sud   f11,f13,f23: non-standard trapping mode not supported
+warn: addt/sud   f16,f23,f22: non-standard trapping mode not supported
+warn: subt/sud   f16,f22,f10: non-standard trapping mode not supported
+warn: mult/sud   f15,f14,f10: non-standard trapping mode not supported
+warn: mult/sud   f10,f14,f12: non-standard trapping mode not supported
+warn: mult/sud   f15,f12,f24: non-standard trapping mode not supported
+warn: mult/sud   f12,f14,f13: non-standard trapping mode not supported
+warn: mult/sud   f24,f13,f12: non-standard trapping mode not supported
+warn: addt/sud   f11,f13,f24: non-standard trapping mode not supported
+warn: mult/sud   f24,f16,f11: non-standard trapping mode not supported
+warn: addt/sud   f24,f17,f11: non-standard trapping mode not supported
+warn: addt/sud   f10,f23,f12: non-standard trapping mode not supported
+warn: addt/sud   f12,f11,f13: non-standard trapping mode not supported
+warn: addt/sud   f22,f13,f0: non-standard trapping mode not supported
+warn: subt/sud   f22,f0,f10: non-standard trapping mode not supported
+warn: mult/sud   f18,f10,f13: non-standard trapping mode not supported
+warn: addt/sud   f10,f13,f12: non-standard trapping mode not supported
+warn: subt/sud   f10,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f0,f10: non-standard trapping mode not supported
+warn: addt/sud   f11,f16,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f11,f12: non-standard trapping mode not supported
+warn: subt/sud   f16,f12,f13: non-standard trapping mode not supported
+warn: addt/sud   f13,f17,f26: non-standard trapping mode not supported
+warn: subt/sud   f13,f26,f14: non-standard trapping mode not supported
+warn: addt/sud   f14,f17,f21: non-standard trapping mode not supported
+warn: mult/sud   f26,f21,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f10,f13: non-standard trapping mode not supported
+warn: mult/sud   f26,f15,f11: non-standard trapping mode not supported
+warn: subt/sud   f26,f11,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f29: non-standard trapping mode not supported
+warn: subt/sud   f26,f29,f30: non-standard trapping mode not supported
+warn: mult/sud   f29,f29,f13: non-standard trapping mode not supported
+warn: mult/sud   f30,f30,f10: non-standard trapping mode not supported
+warn: mult/sud   f29,f30,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f10,f11: non-standard trapping mode not supported
+warn: addt/sud   f13,f11,f12: non-standard trapping mode not supported
+warn: subt/sud   f13,f12,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f22: non-standard trapping mode not supported
+warn: addt/sud   f22,f10,f24: non-standard trapping mode not supported
+warn: addt/sud   f13,f24,f14: non-standard trapping mode not supported
+warn: addt/sud   f12,f14,f28: non-standard trapping mode not supported
+warn: subt/sud   f12,f28,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f14,f1: non-standard trapping mode not supported
+warn: mult/sud   f28,f15,f11: non-standard trapping mode not supported
+warn: subt/sud   f28,f11,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f25: non-standard trapping mode not supported
+warn: mult/sud   f14,f15,f11: non-standard trapping mode not supported
+warn: subt/sud   f14,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f28,f25,f27: non-standard trapping mode not supported
+warn: subt/sud   f14,f22,f15: non-standard trapping mode not supported
+warn: mult/sud   f27,f22,f24: non-standard trapping mode not supported
+warn: mult/sud   f25,f22,f13: non-standard trapping mode not supported
+warn: mult/sud   f25,f15,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f24,f12: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f13: non-standard trapping mode not supported
+warn: mult/sud   f27,f15,f10: non-standard trapping mode not supported
+warn: mult/sud   f1,f14,f10: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f13: non-standard trapping mode not supported
+warn: mult/sud   f28,f10,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f14: non-standard trapping mode not supported
+warn: addt/sud   f14,f13,f11: non-standard trapping mode not supported
+warn: subt/sud   f12,f13,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f15: non-standard trapping mode not supported
+warn: addt/sud   f14,f13,f23: non-standard trapping mode not supported
+warn: subt/sud   f13,f23,f10: non-standard trapping mode not supported
+warn: addt/sud   f14,f10,f11: non-standard trapping mode not supported
+warn: subt/sud   f14,f23,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f10,f15,f11: non-standard trapping mode not supported
+warn: addt/sud   f22,f23,f13: non-standard trapping mode not supported
+warn: subt/sud   f13,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f13,f12,f15: non-standard trapping mode not supported
+warn: mult/sud   f25,f12,f14: non-standard trapping mode not supported
+warn: subt/sud   f23,f13,f10: non-standard trapping mode not supported
+warn: mult/sud   f27,f12,f24: non-standard trapping mode not supported
+warn: mult/sud   f1,f13,f10: non-standard trapping mode not supported
+warn: mult/sud   f28,f24,f11: non-standard trapping mode not supported
+warn: addt/sud   f14,f11,f12: non-standard trapping mode not supported
+warn: subt/sud   f14,f12,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f14: non-standard trapping mode not supported
+warn: addt/sud   f13,f14,f11: non-standard trapping mode not supported
+warn: addt/sud   f14,f13,f24: non-standard trapping mode not supported
+warn: subt/sud   f13,f24,f10: non-standard trapping mode not supported
+warn: subt/sud   f14,f24,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f13,f14: non-standard trapping mode not supported
+warn: addt/sud   f14,f15,f11: non-standard trapping mode not supported
+warn: addt/sud   f23,f24,f12: non-standard trapping mode not supported
+warn: mult/sud   f12,f15,f11: non-standard trapping mode not supported
+warn: subt/sud   f12,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f12,f22,f14: non-standard trapping mode not supported
+warn: subt/sud   f24,f12,f10: non-standard trapping mode not supported
+warn: addt/sud   f23,f10,f14: non-standard trapping mode not supported
+warn: mult/sud   f27,f10,f22: non-standard trapping mode not supported
+warn: mult/sud   f25,f14,f11: non-standard trapping mode not supported
+warn: mult/sud   f27,f14,f10: non-standard trapping mode not supported
+warn: addt/sud   f13,f11,f22: non-standard trapping mode not supported
+warn: subt/sud   f13,f22,f10: non-standard trapping mode not supported
+warn: mult/sud   f1,f12,f10: non-standard trapping mode not supported
+warn: mult/sud   f28,f14,f11: non-standard trapping mode not supported
+warn: addt/sud   f24,f13,f23: non-standard trapping mode not supported
+warn: addt/sud   f22,f23,f12: non-standard trapping mode not supported
+warn: subt/sud   f12,f13,f15: non-standard trapping mode not supported
+warn: mult/sud   f30,f13,f24: non-standard trapping mode not supported
+warn: mult/sud   f29,f13,f14: non-standard trapping mode not supported
+warn: mult/sud   f29,f15,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f24,f13: non-standard trapping mode not supported
+warn: addt/sud   f14,f11,f13: non-standard trapping mode not supported
+warn: subt/sud   f14,f13,f10: non-standard trapping mode not supported
+warn: subt/sud   f22,f12,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f23,f22: non-standard trapping mode not supported
+warn: mult/sud   f21,f12,f10: non-standard trapping mode not supported
+warn: mult/sud   f30,f15,f10: non-standard trapping mode not supported
+warn: mult/sud   f26,f22,f11: non-standard trapping mode not supported
+warn: addt/sud   f24,f14,f11: non-standard trapping mode not supported
+warn: addt/sud   f13,f11,f14: non-standard trapping mode not supported
+warn: addt/sud   f14,f26,f29: non-standard trapping mode not supported
+warn: subt/sud   f13,f14,f10: non-standard trapping mode not supported
+warn: subt/sud   f14,f29,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f26,f14: non-standard trapping mode not supported
+warn: addt/sud   f14,f21,f22: non-standard trapping mode not supported
+warn: addt/sud   f22,f13,f30: non-standard trapping mode not supported
+warn: subt/sud   f26,f29,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f14,f24: non-standard trapping mode not supported
+warn: addt/sud   f24,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f21,f30: non-standard trapping mode not supported
+warn: addt/sud   f30,f29,f26: non-standard trapping mode not supported
+warn: mult/sud   f14,f10,f11: non-standard trapping mode not supported
+warn: subt/sud   f14,f12,f15: non-standard trapping mode not supported
+warn: mult/sud   f27,f12,f22: non-standard trapping mode not supported
+warn: mult/sud   f25,f12,f13: non-standard trapping mode not supported
+warn: addt/sud   f11,f22,f24: non-standard trapping mode not supported
+warn: addt/sud   f13,f24,f12: non-standard trapping mode not supported
+warn: addt/sud   f10,f24,f13: non-standard trapping mode not supported
+warn: addt/sud   f24,f15,f22: non-standard trapping mode not supported
+warn: addt/sud   f14,f13,f22: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f23: non-standard trapping mode not supported
+warn: subt/sud   f14,f22,f10: non-standard trapping mode not supported
+warn: addt/sud   f14,f23,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f15: non-standard trapping mode not supported
+warn: addt/sud   f15,f22,f12: non-standard trapping mode not supported
+warn: mult/sud   f12,f23,f11: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f24: non-standard trapping mode not supported
+warn: subt/sud   f12,f24,f14: non-standard trapping mode not supported
+warn: mult/sud   f25,f24,f13: non-standard trapping mode not supported
+warn: mult/sud   f27,f10,f24: non-standard trapping mode not supported
+warn: addt/sud   f13,f11,f24: non-standard trapping mode not supported
+warn: addt/sud   f15,f10,f14: non-standard trapping mode not supported
+warn: mult/sud   f20,f23,f11: non-standard trapping mode not supported
+warn: mult/sud   f26,f23,f11: non-standard trapping mode not supported
+warn: subt/sud   f20,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f20,f12,f22: non-standard trapping mode not supported
+warn: addt/sud   f22,f13,f25: non-standard trapping mode not supported
+warn: subt/sud   f26,f13,f14: non-standard trapping mode not supported
+warn: addt/sud   f24,f25,f15: non-standard trapping mode not supported
+warn: mult/sud   f12,f10,f13: non-standard trapping mode not supported
+warn: subt/sud   f29,f26,f10: non-standard trapping mode not supported
+warn: mult/sud   f22,f10,f12: non-standard trapping mode not supported
+warn: mult/sud   f12,f14,f11: non-standard trapping mode not supported
+warn: addt/sud   f30,f10,f14: non-standard trapping mode not supported
+warn: mult/sud   f18,f26,f10: non-standard trapping mode not supported
+warn: mult/sud   f22,f14,f10: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f12: non-standard trapping mode not supported
+warn: mult/sud   f20,f14,f11: non-standard trapping mode not supported
+warn: addt/sud   f22,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f12,f11,f26: non-standard trapping mode not supported
+warn: mult/sud   f15,f23,f11: non-standard trapping mode not supported
+warn: mult/sud   f0,f23,f11: non-standard trapping mode not supported
+warn: subt/sud   f15,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f12,f26,f10: non-standard trapping mode not supported
+warn: subt/sud   f0,f11,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f27: non-standard trapping mode not supported
+warn: subt/sud   f15,f12,f22: non-standard trapping mode not supported
+warn: subt/sud   f0,f13,f14: non-standard trapping mode not supported
+warn: subt/sud   f24,f15,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f25,f14: non-standard trapping mode not supported
+warn: mult/sud   f15,f19,f11: non-standard trapping mode not supported
+warn: mult/sud   f14,f0,f22: non-standard trapping mode not supported
+warn: subt/sud   f26,f14,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f13,f22: non-standard trapping mode not supported
+warn: subt/sud   f22,f15,f24: non-standard trapping mode not supported
+warn: addt/sud   f24,f27,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f14,f13: non-standard trapping mode not supported
+warn: addt/sud   f13,f0,f14: non-standard trapping mode not supported
+warn: addt/sud   f10,f0,f24: non-standard trapping mode not supported
+warn: addt/sud   f24,f19,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f14,f10: non-standard trapping mode not supported
+warn: subt/sud   f14,f10,f22: non-standard trapping mode not supported
+warn: mult/sud   f3,f10,f12: non-standard trapping mode not supported
+warn: mult/sud   f11,f10,f24: non-standard trapping mode not supported
+warn: subt/sud   f24,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f12,f11,f15: non-standard trapping mode not supported
+warn: subt/sud   f15,f11,f14: non-standard trapping mode not supported
+warn: mult/sud   f14,f10,f24: non-standard trapping mode not supported
+warn: mult/sud   f14,f10,f13: non-standard trapping mode not supported
+warn: mult/sud   f14,f10,f12: non-standard trapping mode not supported
+warn: subt/sud   f3,f13,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f24,f13: non-standard trapping mode not supported
+warn: subt/sud   f13,f12,f11: non-standard trapping mode not supported
+warn: subt/sud   f10,f12,f13: non-standard trapping mode not supported
+warn: subt/sud   f11,f12,f2: non-standard trapping mode not supported
+warn: subt/sud   f11,f2,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f13,f17: non-standard trapping mode not supported
+warn: addt/sud   f13,f10,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f25: non-standard trapping mode not supported
+warn: addt/sud   f23,f10,f11: non-standard trapping mode not supported
+warn: mult/sud   f14,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f22,f27: non-standard trapping mode not supported
+warn: mult/sud   f11,f10,f13: non-standard trapping mode not supported
+warn: addt/sud   f13,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f12,f15,f23: non-standard trapping mode not supported
+warn: mult/sud   f14,f27,f11: non-standard trapping mode not supported
+warn: mult/sud   f10,f24,f11: non-standard trapping mode not supported
+warn: subt/sud   f23,f15,f11: non-standard trapping mode not supported
+warn: subt/sud   f13,f25,f10: non-standard trapping mode not supported
+hack: be nice to actually delete the event here
+Exiting @ tick 4217692500 because a thread reached the max instruction count
+
+
+Running soplex
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:53:25
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/soplex configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b soplex --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+Couldn't open "/home/min/a/ece565/benchspec/CPU2006/450.soplex//data/ref/input/ref.mps.info" for writing.
+hack: be nice to actually delete the event here
+Exiting @ tick 223336500 because target called exit()
+
+
+Running povray
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:53:27
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/povray configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b povray --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+warn: mult/sud   f16,f16,f23: non-standard trapping mode not supported
+warn: mult/sud   f23,f16,f10: non-standard trapping mode not supported
+warn: mult/sud   f23,f10,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f12: non-standard trapping mode not supported
+warn: mult/sud   f12,f23,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f13: non-standard trapping mode not supported
+warn: mult/sud   f13,f23,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f14: non-standard trapping mode not supported
+warn: mult/sud   f14,f23,f15: non-standard trapping mode not supported
+warn: addt/sud   f15,f10,f11: non-standard trapping mode not supported
+warn: mult/sud   f11,f10,f22: non-standard trapping mode not supported
+warn: addt/sud   f16,f22,f12: non-standard trapping mode not supported
+warn: subt/sud   f16,f12,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f22,f24: non-standard trapping mode not supported
+warn: mult/sud   f24,f10,f26: non-standard trapping mode not supported
+warn: addt/sud   f26,f12,f27: non-standard trapping mode not supported
+warn: addt/sud   f16,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f11,f12: non-standard trapping mode not supported
+warn: subt/sud   f16,f11,f12: non-standard trapping mode not supported
+warn: mult/sud   f13,f26,f27: non-standard trapping mode not supported
+warn: mult/sud   f12,f13,f10: non-standard trapping mode not supported
+warn: mult/sud   f13,f12,f10: non-standard trapping mode not supported
+warn: mult/sud   f11,f27,f23: non-standard trapping mode not supported
+warn: mult/sud   f12,f10,f14: non-standard trapping mode not supported
+warn: mult/sud   f12,f10,f27: non-standard trapping mode not supported
+warn: mult/sud   f12,f23,f24: non-standard trapping mode not supported
+warn: mult/sud   f12,f14,f22: non-standard trapping mode not supported
+warn: mult/sud   f12,f27,f13: non-standard trapping mode not supported
+warn: addt/sud   f16,f22,f14: non-standard trapping mode not supported
+warn: subt/sud   f16,f14,f10: non-standard trapping mode not supported
+warn: addt/sud   f15,f10,f24: non-standard trapping mode not supported
+warn: addt/sud   f22,f10,f23: non-standard trapping mode not supported
+warn: mult/sud   f23,f24,f15: non-standard trapping mode not supported
+warn: addt/sud   f15,f24,f26: non-standard trapping mode not supported
+warn: mult/sud   f16,f26,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f13,f15: non-standard trapping mode not supported
+warn: addt/sud   f15,f23,f24: non-standard trapping mode not supported
+warn: addt/sud   f14,f24,f0: non-standard trapping mode not supported
+warn: subt/sud   f14,f0,f10: non-standard trapping mode not supported
+warn: addt/sud   f24,f10,f26: non-standard trapping mode not supported
+warn: mult/sud   f26,f10,f27: non-standard trapping mode not supported
+warn: addt/sud   f0,f27,f11: non-standard trapping mode not supported
+warn: addt/sud   f10,f16,f15: non-standard trapping mode not supported
+warn: subt/sud   f15,f10,f22: non-standard trapping mode not supported
+warn: subt/sud   f16,f22,f11: non-standard trapping mode not supported
+warn: mult/sud   f11,f11,f13: non-standard trapping mode not supported
+warn: mult/sud   f11,f13,f14: non-standard trapping mode not supported
+warn: mult/sud   f13,f10,f12: non-standard trapping mode not supported
+warn: subt/sud   f12,f10,f23: non-standard trapping mode not supported
+warn: mult/sud   f13,f10,f11: non-standard trapping mode not supported
+warn: mult/sud   f14,f23,f24: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f26: non-standard trapping mode not supported
+warn: addt/sud   f11,f24,f14: non-standard trapping mode not supported
+warn: mult/sud   f26,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f27,f12: non-standard trapping mode not supported
+warn: mult/sud   f12,f13,f22: non-standard trapping mode not supported
+warn: mult/sud   f13,f22,f10: non-standard trapping mode not supported
+warn: mult/sud   f14,f10,f15: non-standard trapping mode not supported
+warn: mult/sud   f14,f10,f11: non-standard trapping mode not supported
+warn: addt/sud   f12,f10,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f12: non-standard trapping mode not supported
+warn: addt/sud   f12,f15,f22: non-standard trapping mode not supported
+warn: addt/sud   f13,f22,f12: non-standard trapping mode not supported
+warn: subt/sud   f13,f12,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f22,f23: non-standard trapping mode not supported
+warn: mult/sud   f23,f10,f24: non-standard trapping mode not supported
+warn: addt/sud   f24,f12,f26: non-standard trapping mode not supported
+warn: subt/sud   f10,f16,f12: non-standard trapping mode not supported
+warn: addt/sud   f12,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f11,f24: non-standard trapping mode not supported
+warn: subt/sud   f12,f24,f11: non-standard trapping mode not supported
+warn: mult/sud   f14,f14,f12: non-standard trapping mode not supported
+warn: mult/sud   f12,f10,f11: non-standard trapping mode not supported
+warn: mult/sud   f14,f12,f13: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f27: non-standard trapping mode not supported
+warn: mult/sud   f13,f27,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f14,f15: non-standard trapping mode not supported
+warn: mult/sud   f15,f10,f11: non-standard trapping mode not supported
+warn: subt/sud   f10,f11,f14: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f22: non-standard trapping mode not supported
+warn: mult/sud   f22,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f23,f24: non-standard trapping mode not supported
+warn: mult/sud   f24,f12,f26: non-standard trapping mode not supported
+warn: subt/sud   f14,f27,f11: non-standard trapping mode not supported
+warn: mult/sud   f15,f10,f12: non-standard trapping mode not supported
+warn: subt/sud   f11,f12,f14: non-standard trapping mode not supported
+warn: addt/sud   f13,f14,f15: non-standard trapping mode not supported
+warn: subt/sud   f13,f15,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f14,f22: non-standard trapping mode not supported
+warn: mult/sud   f22,f10,f23: non-standard trapping mode not supported
+warn: addt/sud   f23,f15,f24: non-standard trapping mode not supported
+warn: subt/sud   f26,f10,f14: non-standard trapping mode not supported
+warn: addt/sud   f14,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f14,f12,f25: non-standard trapping mode not supported
+warn: mult/sud   f25,f25,f13: non-standard trapping mode not supported
+warn: mult/sud   f25,f15,f12: non-standard trapping mode not supported
+warn: addt/sud   f25,f24,f11: non-standard trapping mode not supported
+warn: addt/sud   f22,f10,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f24: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f14: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f27: non-standard trapping mode not supported
+warn: addt/sud   f12,f11,f27: non-standard trapping mode not supported
+warn: mult/sud   f27,f23,f11: non-standard trapping mode not supported
+warn: subt/sud   f22,f14,f11: non-standard trapping mode not supported
+warn: subt/sud   f25,f24,f10: non-standard trapping mode not supported
+warn: addt/sud   f15,f10,f27: non-standard trapping mode not supported
+warn: mult/sud   f13,f25,f12: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f15: non-standard trapping mode not supported
+warn: mult/sud   f27,f14,f12: non-standard trapping mode not supported
+warn: mult/sud   f25,f15,f27: non-standard trapping mode not supported
+warn: subt/sud   f12,f27,f15: non-standard trapping mode not supported
+warn: mult/sud   f24,f14,f12: non-standard trapping mode not supported
+warn: subt/sud   f23,f12,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f13: non-standard trapping mode not supported
+warn: subt/sud   f23,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f12,f14: non-standard trapping mode not supported
+warn: mult/sud   f12,f13,f27: non-standard trapping mode not supported
+warn: mult/sud   f27,f22,f11: non-standard trapping mode not supported
+warn: subt/sud   f15,f11,f13: non-standard trapping mode not supported
+warn: addt/sud   f13,f14,f12: non-standard trapping mode not supported
+warn: addt/sud   f11,f12,f0: non-standard trapping mode not supported
+warn: subt/sud   f11,f0,f10: non-standard trapping mode not supported
+warn: mult/sud   f11,f10,f15: non-standard trapping mode not supported
+warn: addt/sud   f0,f15,f22: non-standard trapping mode not supported
+warn: subt/sud   f11,f12,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f11,f26: non-standard trapping mode not supported
+warn: addt/sud   f12,f26,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f14,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f11,f13: non-standard trapping mode not supported
+warn: addt/sud   f14,f13,f15: non-standard trapping mode not supported
+warn: mult/sud   f16,f10,f13: non-standard trapping mode not supported
+warn: addt/sud   f13,f11,f5: non-standard trapping mode not supported
+warn: subt/sud   f5,f11,f3: non-standard trapping mode not supported
+warn: mult/sud   f3,f10,f15: non-standard trapping mode not supported
+warn: mult/sud   f3,f10,f14: non-standard trapping mode not supported
+warn: mult/sud   f3,f10,f11: non-standard trapping mode not supported
+warn: subt/sud   f16,f14,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f15,f4: non-standard trapping mode not supported
+warn: subt/sud   f4,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f4,f10,f12: non-standard trapping mode not supported
+warn: subt/sud   f12,f11,f13: non-standard trapping mode not supported
+warn: mult/sud   f16,f10,f24: non-standard trapping mode not supported
+warn: mult/sud   f10,f10,f12: non-standard trapping mode not supported
+warn: addt/sud   f25,f11,f15: non-standard trapping mode not supported
+warn: subt/sud   f15,f25,f10: non-standard trapping mode not supported
+warn: mult/sud   f12,f12,f13: non-standard trapping mode not supported
+warn: mult/sud   f12,f13,f14: non-standard trapping mode not supported
+warn: mult/sud   f14,f22,f26: non-standard trapping mode not supported
+warn: addt/sud   f26,f23,f27: non-standard trapping mode not supported
+warn: addt/sud   f27,f12,f22: non-standard trapping mode not supported
+warn: mult/sud   f12,f23,f10: non-standard trapping mode not supported
+warn: mult/sud   f22,f10,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f23: non-standard trapping mode not supported
+warn: mult/sud   f22,f10,f26: non-standard trapping mode not supported
+warn: mult/sud   f23,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f26,f27: non-standard trapping mode not supported
+warn: mult/sud   f27,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f12,f11,f13: non-standard trapping mode not supported
+warn: mult/sud   f14,f13,f23: non-standard trapping mode not supported
+warn: subt/sud   f15,f23,f11: non-standard trapping mode not supported
+warn: addt/sud   f14,f27,f13: non-standard trapping mode not supported
+warn: subt/sud   f14,f13,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f27,f12: non-standard trapping mode not supported
+warn: subt/sud   f14,f24,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f13,f10: non-standard trapping mode not supported
+warn: mult/sud   f28,f12,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f27,f15: non-standard trapping mode not supported
+warn: addt/sud   f24,f10,f11: non-standard trapping mode not supported
+warn: addt/sud   f25,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f25,f23: non-standard trapping mode not supported
+warn: addt/sud   f3,f25,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f25,f11: non-standard trapping mode not supported
+warn: subt/sud   f3,f11,f25: non-standard trapping mode not supported
+warn: mult/sud   f25,f13,f12: non-standard trapping mode not supported
+warn: mult/sud   f12,f24,f23: non-standard trapping mode not supported
+warn: mult/sud   f23,f12,f10: non-standard trapping mode not supported
+warn: mult/sud   f23,f15,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f26: non-standard trapping mode not supported
+warn: addt/sud   f25,f10,f11: non-standard trapping mode not supported
+warn: subt/sud   f12,f22,f10: non-standard trapping mode not supported
+warn: addt/sud   f26,f10,f27: non-standard trapping mode not supported
+warn: addt/sud   f10,f17,f26: non-standard trapping mode not supported
+warn: addt/sud   f15,f10,f12: non-standard trapping mode not supported
+warn: mult/sud   f25,f14,f10: non-standard trapping mode not supported
+warn: mult/sud   f26,f22,f27: non-standard trapping mode not supported
+warn: mult/sud   f25,f12,f15: non-standard trapping mode not supported
+warn: mult/sud   f17,f10,f15: non-standard trapping mode not supported
+warn: addt/sud   f27,f15,f23: non-standard trapping mode not supported
+warn: addt/sud   f23,f27,f12: non-standard trapping mode not supported
+warn: subt/sud   f11,f15,f12: non-standard trapping mode not supported
+warn: mult/sud   f24,f22,f12: non-standard trapping mode not supported
+warn: addt/sud   f14,f12,f11: non-standard trapping mode not supported
+warn: subt/sud   f14,f11,f10: non-standard trapping mode not supported
+warn: addt/sud   f12,f10,f14: non-standard trapping mode not supported
+warn: mult/sud   f11,f14,f13: non-standard trapping mode not supported
+warn: subt/sud   f12,f10,f13: non-standard trapping mode not supported
+warn: mult/sud   f2,f10,f12: non-standard trapping mode not supported
+warn: addt/sud   f15,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f0,f11,f10: non-standard trapping mode not supported
+warn: mult/sud   f17,f15,f22: non-standard trapping mode not supported
+warn: mult/sud   f15,f12,f22: non-standard trapping mode not supported
+warn: addt/sud   f22,f26,f23: non-standard trapping mode not supported
+warn: mult/sud   f23,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f25,f13: non-standard trapping mode not supported
+warn: mult/sud   f13,f12,f11: non-standard trapping mode not supported
+warn: mult/sud   f14,f6,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f22,f23: non-standard trapping mode not supported
+warn: addt/sud   f17,f10,f11: non-standard trapping mode not supported
+warn: addt/sud   f6,f11,f13: non-standard trapping mode not supported
+warn: subt/sud   f6,f13,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f12: non-standard trapping mode not supported
+warn: addt/sud   f24,f14,f11: non-standard trapping mode not supported
+warn: mult/sud   f12,f10,f15: non-standard trapping mode not supported
+warn: subt/sud   f15,f24,f11: non-standard trapping mode not supported
+warn: mult/sud   f6,f6,f11: non-standard trapping mode not supported
+warn: addt/sud   f6,f11,f10: non-standard trapping mode not supported
+warn: mult/sud   f28,f11,f10: non-standard trapping mode not supported
+warn: addt/sud   f27,f10,f24: non-standard trapping mode not supported
+warn: addt/sud   f17,f10,f14: non-standard trapping mode not supported
+warn: mult/sud   f15,f24,f26: non-standard trapping mode not supported
+warn: mult/sud   f13,f15,f10: non-standard trapping mode not supported
+warn: mult/sud   f11,f24,f27: non-standard trapping mode not supported
+warn: addt/sud   f26,f27,f12: non-standard trapping mode not supported
+warn: mult/sud   f13,f10,f23: non-standard trapping mode not supported
+warn: mult/sud   f11,f12,f24: non-standard trapping mode not supported
+warn: addt/sud   f25,f24,f26: non-standard trapping mode not supported
+warn: addt/sud   f6,f23,f22: non-standard trapping mode not supported
+warn: mult/sud   f11,f26,f12: non-standard trapping mode not supported
+warn: addt/sud   f12,f10,f27: non-standard trapping mode not supported
+warn: mult/sud   f11,f27,f12: non-standard trapping mode not supported
+warn: subt/sud   f6,f22,f10: non-standard trapping mode not supported
+warn: mult/sud   f15,f14,f10: non-standard trapping mode not supported
+warn: addt/sud   f23,f10,f27: non-standard trapping mode not supported
+warn: mult/sud   f14,f27,f12: non-standard trapping mode not supported
+warn: addt/sud   f11,f12,f13: non-standard trapping mode not supported
+warn: mult/sud   f14,f15,f24: non-standard trapping mode not supported
+warn: mult/sud   f6,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f24,f26: non-standard trapping mode not supported
+warn: addt/sud   f17,f26,f11: non-standard trapping mode not supported
+warn: addt/sud   f22,f12,f0: non-standard trapping mode not supported
+warn: subt/sud   f22,f0,f10: non-standard trapping mode not supported
+warn: addt/sud   f12,f10,f13: non-standard trapping mode not supported
+warn: mult/sud   f13,f10,f15: non-standard trapping mode not supported
+warn: subt/sud   f15,f12,f11: non-standard trapping mode not supported
+warn: mult/sud   f13,f10,f14: non-standard trapping mode not supported
+warn: addt/sud   f11,f16,f10: non-standard trapping mode not supported
+warn: subt/sud   f16,f12,f13: non-standard trapping mode not supported
+warn: addt/sud   f13,f17,f26: non-standard trapping mode not supported
+warn: subt/sud   f13,f26,f14: non-standard trapping mode not supported
+warn: addt/sud   f14,f17,f21: non-standard trapping mode not supported
+warn: mult/sud   f26,f21,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f10,f13: non-standard trapping mode not supported
+warn: mult/sud   f26,f15,f11: non-standard trapping mode not supported
+warn: subt/sud   f26,f11,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f29: non-standard trapping mode not supported
+warn: subt/sud   f26,f29,f30: non-standard trapping mode not supported
+warn: mult/sud   f29,f29,f13: non-standard trapping mode not supported
+warn: mult/sud   f30,f30,f10: non-standard trapping mode not supported
+warn: mult/sud   f29,f30,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f10,f11: non-standard trapping mode not supported
+warn: addt/sud   f13,f11,f12: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f22: non-standard trapping mode not supported
+warn: addt/sud   f22,f10,f24: non-standard trapping mode not supported
+warn: addt/sud   f13,f24,f14: non-standard trapping mode not supported
+warn: addt/sud   f12,f14,f28: non-standard trapping mode not supported
+warn: subt/sud   f12,f28,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f14,f1: non-standard trapping mode not supported
+warn: mult/sud   f28,f15,f11: non-standard trapping mode not supported
+warn: subt/sud   f28,f11,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f25: non-standard trapping mode not supported
+warn: subt/sud   f28,f25,f27: non-standard trapping mode not supported
+warn: mult/sud   f14,f15,f11: non-standard trapping mode not supported
+warn: subt/sud   f14,f22,f15: non-standard trapping mode not supported
+warn: mult/sud   f27,f22,f24: non-standard trapping mode not supported
+warn: mult/sud   f25,f22,f13: non-standard trapping mode not supported
+warn: mult/sud   f27,f15,f10: non-standard trapping mode not supported
+warn: mult/sud   f25,f15,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f24,f12: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f13: non-standard trapping mode not supported
+warn: mult/sud   f1,f14,f10: non-standard trapping mode not supported
+warn: mult/sud   f28,f10,f11: non-standard trapping mode not supported
+warn: addt/sud   f14,f13,f11: non-standard trapping mode not supported
+warn: subt/sud   f12,f13,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f15: non-standard trapping mode not supported
+warn: addt/sud   f14,f13,f23: non-standard trapping mode not supported
+warn: subt/sud   f13,f23,f10: non-standard trapping mode not supported
+warn: addt/sud   f14,f10,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f24: non-standard trapping mode not supported
+warn: subt/sud   f14,f23,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f10,f15,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f22: non-standard trapping mode not supported
+warn: addt/sud   f22,f23,f13: non-standard trapping mode not supported
+warn: subt/sud   f13,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f13,f12,f15: non-standard trapping mode not supported
+warn: mult/sud   f27,f12,f24: non-standard trapping mode not supported
+warn: mult/sud   f25,f12,f14: non-standard trapping mode not supported
+warn: addt/sud   f14,f11,f12: non-standard trapping mode not supported
+warn: subt/sud   f23,f13,f10: non-standard trapping mode not supported
+warn: subt/sud   f14,f12,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f14: non-standard trapping mode not supported
+warn: mult/sud   f1,f13,f10: non-standard trapping mode not supported
+warn: mult/sud   f28,f24,f11: non-standard trapping mode not supported
+warn: addt/sud   f13,f14,f11: non-standard trapping mode not supported
+warn: addt/sud   f14,f13,f24: non-standard trapping mode not supported
+warn: subt/sud   f13,f24,f10: non-standard trapping mode not supported
+warn: addt/sud   f12,f15,f23: non-standard trapping mode not supported
+warn: subt/sud   f14,f24,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f13,f14: non-standard trapping mode not supported
+warn: addt/sud   f14,f15,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f10,f23: non-standard trapping mode not supported
+warn: addt/sud   f23,f24,f12: non-standard trapping mode not supported
+warn: mult/sud   f12,f15,f11: non-standard trapping mode not supported
+warn: subt/sud   f12,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f12,f22,f14: non-standard trapping mode not supported
+warn: mult/sud   f25,f14,f11: non-standard trapping mode not supported
+warn: subt/sud   f24,f12,f10: non-standard trapping mode not supported
+warn: mult/sud   f27,f10,f22: non-standard trapping mode not supported
+warn: addt/sud   f23,f10,f14: non-standard trapping mode not supported
+warn: mult/sud   f1,f12,f10: non-standard trapping mode not supported
+warn: mult/sud   f27,f14,f10: non-standard trapping mode not supported
+warn: mult/sud   f28,f14,f11: non-standard trapping mode not supported
+warn: addt/sud   f13,f11,f22: non-standard trapping mode not supported
+warn: subt/sud   f13,f22,f10: non-standard trapping mode not supported
+warn: addt/sud   f24,f13,f23: non-standard trapping mode not supported
+warn: addt/sud   f22,f23,f12: non-standard trapping mode not supported
+warn: subt/sud   f12,f13,f15: non-standard trapping mode not supported
+warn: mult/sud   f30,f13,f24: non-standard trapping mode not supported
+warn: mult/sud   f29,f13,f14: non-standard trapping mode not supported
+warn: mult/sud   f30,f15,f10: non-standard trapping mode not supported
+warn: mult/sud   f29,f15,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f24,f13: non-standard trapping mode not supported
+warn: addt/sud   f14,f11,f13: non-standard trapping mode not supported
+warn: subt/sud   f22,f12,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f23,f22: non-standard trapping mode not supported
+warn: mult/sud   f21,f12,f10: non-standard trapping mode not supported
+warn: mult/sud   f26,f22,f11: non-standard trapping mode not supported
+warn: addt/sud   f13,f11,f14: non-standard trapping mode not supported
+warn: addt/sud   f14,f26,f29: non-standard trapping mode not supported
+warn: subt/sud   f13,f14,f10: non-standard trapping mode not supported
+warn: subt/sud   f14,f29,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f26,f14: non-standard trapping mode not supported
+warn: subt/sud   f26,f29,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f14,f24: non-standard trapping mode not supported
+warn: addt/sud   f24,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f21,f30: non-standard trapping mode not supported
+warn: addt/sud   f30,f29,f26: non-standard trapping mode not supported
+warn: subt/sud   f14,f12,f15: non-standard trapping mode not supported
+warn: mult/sud   f27,f12,f22: non-standard trapping mode not supported
+warn: mult/sud   f25,f12,f13: non-standard trapping mode not supported
+warn: addt/sud   f11,f22,f24: non-standard trapping mode not supported
+warn: addt/sud   f13,f24,f12: non-standard trapping mode not supported
+warn: addt/sud   f10,f24,f13: non-standard trapping mode not supported
+warn: addt/sud   f24,f15,f22: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f23: non-standard trapping mode not supported
+warn: addt/sud   f14,f13,f22: non-standard trapping mode not supported
+warn: subt/sud   f14,f22,f10: non-standard trapping mode not supported
+warn: addt/sud   f14,f23,f11: non-standard trapping mode not supported
+warn: addt/sud   f15,f22,f12: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f24: non-standard trapping mode not supported
+warn: subt/sud   f12,f24,f14: non-standard trapping mode not supported
+warn: mult/sud   f25,f24,f13: non-standard trapping mode not supported
+warn: mult/sud   f27,f10,f24: non-standard trapping mode not supported
+warn: addt/sud   f15,f10,f14: non-standard trapping mode not supported
+warn: addt/sud   f13,f11,f24: non-standard trapping mode not supported
+warn: addt/sud   f22,f13,f25: non-standard trapping mode not supported
+warn: addt/sud   f24,f25,f15: non-standard trapping mode not supported
+warn: mult/sud   f26,f23,f11: non-standard trapping mode not supported
+warn: mult/sud   f20,f23,f11: non-standard trapping mode not supported
+warn: subt/sud   f20,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f26,f13,f14: non-standard trapping mode not supported
+warn: subt/sud   f20,f12,f22: non-standard trapping mode not supported
+warn: mult/sud   f12,f14,f11: non-standard trapping mode not supported
+warn: mult/sud   f12,f10,f13: non-standard trapping mode not supported
+warn: mult/sud   f22,f10,f12: non-standard trapping mode not supported
+warn: subt/sud   f29,f26,f10: non-standard trapping mode not supported
+warn: addt/sud   f30,f10,f14: non-standard trapping mode not supported
+warn: mult/sud   f22,f14,f10: non-standard trapping mode not supported
+warn: mult/sud   f18,f26,f10: non-standard trapping mode not supported
+warn: mult/sud   f20,f14,f11: non-standard trapping mode not supported
+warn: addt/sud   f22,f13,f11: non-standard trapping mode not supported
+warn: addt/sud   f12,f11,f26: non-standard trapping mode not supported
+warn: subt/sud   f12,f26,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f11,f27: non-standard trapping mode not supported
+warn: mult/sud   f0,f23,f11: non-standard trapping mode not supported
+warn: mult/sud   f15,f23,f11: non-standard trapping mode not supported
+warn: subt/sud   f0,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f15,f11,f10: non-standard trapping mode not supported
+warn: subt/sud   f0,f13,f14: non-standard trapping mode not supported
+warn: subt/sud   f15,f12,f22: non-standard trapping mode not supported
+warn: subt/sud   f24,f15,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f25,f14: non-standard trapping mode not supported
+warn: mult/sud   f15,f19,f11: non-standard trapping mode not supported
+warn: mult/sud   f14,f0,f22: non-standard trapping mode not supported
+warn: subt/sud   f26,f14,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f13,f22: non-standard trapping mode not supported
+warn: subt/sud   f22,f15,f24: non-standard trapping mode not supported
+warn: addt/sud   f24,f27,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f14,f13: non-standard trapping mode not supported
+warn: addt/sud   f13,f0,f14: non-standard trapping mode not supported
+warn: addt/sud   f10,f0,f24: non-standard trapping mode not supported
+warn: addt/sud   f24,f19,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f14,f10: non-standard trapping mode not supported
+warn: subt/sud   f14,f10,f22: non-standard trapping mode not supported
+warn: mult/sud   f11,f10,f24: non-standard trapping mode not supported
+warn: subt/sud   f24,f12,f11: non-standard trapping mode not supported
+warn: subt/sud   f4,f11,f12: non-standard trapping mode not supported
+warn: subt/sud   f12,f11,f3: non-standard trapping mode not supported
+warn: subt/sud   f4,f12,f10: non-standard trapping mode not supported
+warn: subt/sud   f12,f3,f10: non-standard trapping mode not supported
+warn: subt/sud   f10,f11,f27: non-standard trapping mode not supported
+warn: addt/sud   f13,f27,f17: non-standard trapping mode not supported
+warn: addt/sud   f12,f23,f15: non-standard trapping mode not supported
+warn: mult/sud   f11,f10,f14: non-standard trapping mode not supported
+warn: subt/sud   f14,f12,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f23,f25: non-standard trapping mode not supported
+warn: subt/sud   f22,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f23,f26,f22: non-standard trapping mode not supported
+warn: subt/sud   f22,f23,f10: non-standard trapping mode not supported
+warn: subt/sud   f26,f10,f25: non-standard trapping mode not supported
+warn: addt/sud   f25,f17,f11: non-standard trapping mode not supported
+warn: subt/sud   f12,f10,f27: non-standard trapping mode not supported
+warn: mult/sud   f15,f11,f13: non-standard trapping mode not supported
+warn: subt/sud   f14,f13,f11: non-standard trapping mode not supported
+warn: subt/sud   f11,f14,f27: non-standard trapping mode not supported
+warn: addt/sud   f15,f27,f13: non-standard trapping mode not supported
+warn: subt/sud   f15,f13,f10: non-standard trapping mode not supported
+warn: addt/sud   f23,f11,f10: non-standard trapping mode not supported
+warn: mult/sud   f25,f17,f12: non-standard trapping mode not supported
+warn: addt/sud   f17,f10,f15: non-standard trapping mode not supported
+warn: subt/sud   f11,f10,f15: non-standard trapping mode not supported
+warn: mult/sud   f13,f15,f11: non-standard trapping mode not supported
+warn: addt/sud   f11,f27,f15: non-standard trapping mode not supported
+warn: mult/sud   f13,f15,f27: non-standard trapping mode not supported
+warn: addt/sud   f12,f27,f11: non-standard trapping mode not supported
+warn: mult/sud   f10,f23,f11: non-standard trapping mode not supported
+warn: mult/sud   f15,f14,f27: non-standard trapping mode not supported
+warn: subt/sud   f11,f27,f12: non-standard trapping mode not supported
+warn: subt/sud   f10,f23,f24: non-standard trapping mode not supported
+warn: addt/sud   f14,f21,f22: non-standard trapping mode not supported
+warn: addt/sud   f22,f13,f30: non-standard trapping mode not supported
+warn: subt/sud   f0,f14,f10: non-standard trapping mode not supported
+warn: addt/sud   f10,f13,f12: non-standard trapping mode not supported
+warn: addt/sud   f12,f15,f13: non-standard trapping mode not supported
+warn: addt/sud   f13,f19,f11: non-standard trapping mode not supported
+warn: mult/sud   f11,f10,f26: non-standard trapping mode not supported
+warn: subt/sud   f26,f12,f11: non-standard trapping mode not supported
+warn: addt/sud   f24,f12,f11: non-standard trapping mode not supported
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+hack: be nice to actually delete the event here
+Exiting @ tick 2214979000 because target called exit()
+
+
+Running calculix
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:53:48
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/calculix configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b calculix --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+info: Increasing stack size by one page.
+hack: be nice to actually delete the event here
+Exiting @ tick 57829500 because target called exit()
+
+
+Running hmmer
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:53:48
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/hmmer configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b hmmer --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+fatal: Can't load object file /home/min/a/ece565/benchspec/CPU2006/456.hmmr//exe/hmmer
+ @ cycle 0
+[create:build/ALPHA_MESI_CMP_directory/sim/process.cc, line 614]
+Memory Usage: 740560 KBytes
+
+
+Running sjeng
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:53:48
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/sjeng configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b sjeng --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+hack: be nice to actually delete the event here
+Exiting @ tick 10352015500 because a thread reached the max instruction count
+
+
+Running GemsFDTD
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:54:36
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/GemsFDTD configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b GemsFDTD --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+hack: be nice to actually delete the event here
+Exiting @ tick 56813000 because target called exit()
+
+
+Running libquantum
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:54:36
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/libquantum configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b libquantum --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+warn: muls/su    f16,f19,f15: non-standard trapping mode not supported
+warn: muls/su    f16,f18,f13: non-standard trapping mode not supported
+warn: muls/su    f17,f18,f23: non-standard trapping mode not supported
+warn: muls/su    f17,f19,f14: non-standard trapping mode not supported
+warn: adds/su    f15,f23,f1: non-standard trapping mode not supported
+warn: subs/su    f13,f14,f0: non-standard trapping mode not supported
+warn: subs/su    f16,f16,f11: non-standard trapping mode not supported
+hack: be nice to actually delete the event here
+Exiting @ tick 3125243000 because a thread reached the max instruction count
+
+
+Running h264ref
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:55:07
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/h264ref configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b h264ref --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+fatal: Can't load object file /home/min/a/ece565/benchspec/CPU2006/464.h264ref//exe/h264
+ @ cycle 0
+[create:build/ALPHA_MESI_CMP_directory/sim/process.cc, line 614]
+Memory Usage: 740556 KBytes
+
+
+Running tonto
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:55:07
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/tonto configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b tonto --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/min/a/abhaumic/gem5/src/python/m5/main.py", line 359, in main
+    exec filecode in scope
+  File "configs/spec2k6/run.py", line 129, in <module>
+    process = spec2k6.tonto
+AttributeError: 'module' object has no attribute 'tonto'
+
+
+Running lbm
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:55:08
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/lbm configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b lbm --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+hack: be nice to actually delete the event here
+Exiting @ tick 7270542000 because a thread reached the max instruction count
+
+
+Running omnetpp
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:55:47
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/omnetpp configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b omnetpp --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+hack: be nice to actually delete the event here
+Exiting @ tick 1090681500 because target called exit()
+
+
+Running astar
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:55:57
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/astar configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b astar --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+panic: Tried to access unmapped address 0.
+ @ cycle 43337500
+[invoke:build/ALPHA_MESI_CMP_directory/arch/alpha/faults.cc, line 220]
+Memory Usage: 747876 KBytes
+Program aborted at cycle 43337500
+./benchmarks/scripts/runBenchmarks.sh: line 70: 22922 Aborted                 (core dumped) $gem5opt -d $folder$program $pathToRunPy $options $cacheOptions -b $program --maxinsts=$maxinsts
+
+
+Running wrf
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:56:00
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/wrf configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b wrf --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+STOP wrf_abort
+ -------------- FATAL CALLED ---------------
+ ERROR OPENING namelist.input
+ -------------------------------------------
+hack: be nice to actually delete the event here
+Exiting @ tick 58651500 because target called exit()
+
+
+Running sphinx3
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:56:01
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/sphinx3 configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b sphinx3 --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+fatal: Can't load object file /home/min/a/ece565/benchspec/CPU2006/482.sphinx//exe/sphinx
+ @ cycle 0
+[create:build/ALPHA_MESI_CMP_directory/sim/process.cc, line 614]
+Memory Usage: 740556 KBytes
+
+
+Running xalancbmk
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:56:01
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/xalancbmk configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b xalancbmk --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+warn: Prefetch instructions in Alpha do not do anything
+warn: sqrtt/su   f16,f0: non-standard trapping mode not supported
+panic: fault (arith) detected @ PC (0x120439a60=>0x120439a64)
+ @ cycle 81276500
+[invoke:build/ALPHA_MESI_CMP_directory/sim/faults.cc, line 48]
+Memory Usage: 767152 KBytes
+Program aborted at cycle 81276500
+./benchmarks/scripts/runBenchmarks.sh: line 70: 22927 Aborted                 (core dumped) $gem5opt -d $folder$program $pathToRunPy $options $cacheOptions -b $program --maxinsts=$maxinsts
+
+
+Running specrand_i
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:56:02
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/specrand_i configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b specrand_i --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+hack: be nice to actually delete the event here
+Exiting @ tick 5352954500 because a thread reached the max instruction count
+
+
+Running specrand_f
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Nov  9 2019 16:38:31
+gem5 started Nov  9 2019 19:56:49
+gem5 executing on qstruct.ecn.purdue.edu
+command line: ./build/ALPHA_MESI_CMP_directory/gem5.opt -d benchmarks/default/specrand_f configs/spec2k6/run.py --cpu-type=detailed --caches --l2cache --l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16 -b specrand_f --maxinsts=10000000
+/home/min/a/abhaumic/gem5/configs/spec2k6
+/home/min/a/abhaumic/gem5/configs
+/home/min/a/abhaumic/gem5
+Global frequency set at 1000000000000 ticks per second
+End of O3 Constructor
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+info: Increasing stack size by one page.
+hack: be nice to actually delete the event here
+Exiting @ tick 5352954500 because a thread reached the max instruction count

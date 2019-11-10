@@ -37,7 +37,7 @@ class DerivO3CPU(BaseCPU):
     type = 'DerivO3CPU'
     activity = Param.Unsigned(0, "Initial count")
 
-    cachePorts = Param.Unsigned(200, "Cache Ports")
+    cachePorts = Param.Unsigned(2, "Cache Ports")
 
     decodeToFetchDelay = Param.Cycles(1, "Decode to fetch delay")
     renameToFetchDelay = Param.Cycles(1 ,"Rename to fetch delay")
