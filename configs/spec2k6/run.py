@@ -155,7 +155,7 @@ multiprocesses.append(process)
 
 np = options.num_cpus
 system = System(cpu = [CPUClass(cpu_id=i) for i in xrange(np)],
-                physmem = SimpleMemory(range=AddrRange("512MB")),
+                physmem = SimpleMemory(range=AddrRange("2GB")),
                 membus = CoherentBus(), mem_mode = test_mem_mode)
 
 for i in xrange(np):

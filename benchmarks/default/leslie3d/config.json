@@ -125,7 +125,7 @@
                 "iewToRenameDelay": 1, 
                 "itb": {
                     "path": "system.cpu.itb", 
-                    "size": 48, 
+                    "size": 256, 
                     "type": "AlphaTLB", 
                     "name": "itb", 
                     "cxx_class": "AlphaISA::TLB"
@@ -660,7 +660,7 @@
                 "issueWidth": 8, 
                 "LSQCheckLoads": true, 
                 "commitToRenameDelay": 1, 
-                "cachePorts": 200, 
+                "cachePorts": 2, 
                 "numPhysFloatRegs": 256, 
                 "numThreads": 1, 
                 "type": "DerivO3CPU", 
@@ -676,7 +676,7 @@
                 "issueToExecuteDelay": 1, 
                 "dtb": {
                     "path": "system.cpu.dtb", 
-                    "size": 64, 
+                    "size": 256, 
                     "type": "AlphaTLB", 
                     "name": "dtb", 
                     "cxx_class": "AlphaISA::TLB"

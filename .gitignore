@@ -32,10 +32,8 @@
 *.app
 
 # Hg Directory
-/.hg/
-
-# Build Directory
-/build
-
-# Python compiled files
+.hg/
+# Compiled Python Files
 *.pyc
+# Build Directory 
+build/
