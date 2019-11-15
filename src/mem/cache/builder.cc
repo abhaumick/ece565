@@ -47,6 +47,10 @@
 #include "mem/cache/tags/lru.hh"
 #endif
 
+#if defined(USE_CACHE_LIP)
+#include "mem/cache/tags/lip.hh"
+#endif
+
 #if defined(USE_CACHE_FALRU)
 #include "mem/cache/tags/fa_lru.hh"
 #endif
@@ -87,6 +91,15 @@ using namespace std;
 #define BUILD_LRU_CACHE BUILD_CACHE_PANIC("lru cache")
 #endif
 
+#if defined(USE_CACHE_LIP)
+#define BUILD_LIP_CACHE do {                                            \
+        LIP *tags = new LIP(numSets, block_size, assoc, hit_latency);       \
+        BUILD_CACHE(LIP, tags);                                         \
+    } while (0)
+#else
+#define BUILD_LIP_CACHE BUILD_CACHE_PANIC("lip cache")
+#endif
+
 #if defined(USE_CACHE_IIC)
 #define BUILD_IIC_CACHE do {                            \
         IIC *tags = new IIC(iic_params);                \
@@ -100,8 +113,10 @@ using namespace std;
         if (repl == NULL) {                             \
             if (numSets == 1) {                         \
                 BUILD_FALRU_CACHE;                      \
+            } else if (assoc == 2) {                  \
+               BUILD_LRU_CACHE;                         \
             } else {                                    \
-               BUILD_LRU_CACHE;                    \
+               BUILD_LIP_CACHE;                         \
             }                                           \
         } else {                                        \
             BUILD_IIC_CACHE;                            \
