@@ -42,10 +42,12 @@
 #include "mem/cache/tags/lru.hh"
 #endif
 
-#if defined(USE_CACHE_LRU)
+#if defined(USE_CACHE_LIP)
 #include "mem/cache/tags/lip.hh"
 #endif
-
+#if defined(USE_CACHE_BIP)
+#include "mem/cache/tags/bip.hh"
+#endif
 #if defined(USE_CACHE_FALRU)
 #include "mem/cache/tags/fa_lru.hh"
 #endif
@@ -74,6 +76,9 @@ template class Cache<LRU>;
 
 #if defined(USE_CACHE_LIP)
 template class Cache<LIP>;
+#endif
+#if defined(USE_CACHE_BIP)
+template class Cache<BIP>;
 #endif
 
 #endif //DOXYGEN_SHOULD_SKIP_THIS

@@ -37,3 +37,6 @@
 *.pyc
 # Build Directory 
 build/
+#MacSpecific
+*._*
+*.DS_Store

@@ -30,6 +30,9 @@
 
 
 #include "mem/cache/tags/cacheset.hh"
+#include <string>
+#include <iostream>
+using namespace std;
 
 CacheBlk*
 CacheSet::findBlk(Addr tag) const
@@ -45,6 +48,7 @@ CacheSet::findBlk(Addr tag) const
 void
 CacheSet::moveToHead(CacheBlk *blk)
 {
+   // cout << " Move to Head Called " << &endl;
     // nothing to do if blk is already head
     if (blks[0] == blk)
         return;
@@ -69,10 +73,11 @@ CacheSet::moveToHead(CacheBlk *blk)
 void
 CacheSet::moveToTail(CacheBlk *blk)
 {
+    cout << " Move to Tail Called "<< "Assoc : "<< assoc << &endl;
     // nothing to do if blk is already tail
-    if (blks[assoc-1] == blk)
+    if (blks[assoc-1] == blk)  
         return;
-
+           
     // write 'next' block into blks[i], moving from LRU to MRU
     // until we overwrite the block we moved to tail.
 

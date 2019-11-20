@@ -64,3 +64,4 @@ class BaseCache(MemObject):
     mem_side = MasterPort("Port on side closer to MEM")
     addr_ranges = VectorParam.AddrRange([AllMemory], "The address range for the CPU-side port")
     system = Param.System(Parent.any, "System we belong to")
+    bip_throttle=Param.Float(1.00, "Bimodal Throttle Parameter")

@@ -50,6 +50,9 @@
 #if defined(USE_CACHE_LIP)
 #include "mem/cache/tags/lip.hh"
 #endif
+#if defined(USE_CACHE_BIP)
+#include "mem/cache/tags/bip.hh"
+#endif
 
 #if defined(USE_CACHE_FALRU)
 #include "mem/cache/tags/fa_lru.hh"
@@ -99,6 +102,14 @@ using namespace std;
 #else
 #define BUILD_LIP_CACHE BUILD_CACHE_PANIC("lip cache")
 #endif
+#if defined(USE_CACHE_BIP)
+#define BUILD_BIP_CACHE do {                                            \
+        BIP *tags = new BIP(numSets, block_size, assoc, hit_latency,bip_throttle);       \
+        BUILD_CACHE(BIP, tags);                                         \
+    } while (0)
+#else
+#define BUILD_BIP_CACHE BUILD_CACHE_PANIC("bip cache")
+#endif
 
 #if defined(USE_CACHE_IIC)
 #define BUILD_IIC_CACHE do {                            \
@@ -116,7 +127,7 @@ using namespace std;
             } else if (assoc == 2) {                  \
                BUILD_LRU_CACHE;                         \
             } else {                                    \
-               BUILD_LIP_CACHE;                         \
+               BUILD_BIP_CACHE;                         \
             }                                           \
         } else {                                        \
             BUILD_IIC_CACHE;                            \
