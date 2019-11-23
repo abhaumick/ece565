@@ -53,7 +53,7 @@ BIP::BIP(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
     : numSets(_numSets), blkSize(_blkSize), assoc(_assoc),
       hitLatency(_hit_latency), bipThrottle(_bip_throttle)
 {
-    cout << "BIP Associativity:"<< assoc << "bipThrottle" << bipThrottle << &endl;
+    // cout << "BIP Associativity:"<< assoc << "bipThrottle" << bipThrottle << &endl;
     // Check parameters
     if (blkSize < 4 || !isPowerOf2(blkSize)) {
         fatal("Block size must be at least 4 and a power of 2");
@@ -110,7 +110,7 @@ BIP::BIP(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
             blk->set = i;
         }
     }
-    cout << "BIP Cache Constructed !" << endl;
+    // cout << "BIP Cache Constructed !" << endl;
 }
 
 BIP::~BIP()
@@ -207,15 +207,15 @@ BIP::insertBlock(Addr addr, BlkType *blk, int master_id)
     unsigned set = extractSet(addr);
     //uniform_int_distribution dis(0.0, 1.0);
     double randP= ((double)rand())/(RAND_MAX);
-    cout << "Associativity" << assoc << "BIP" << " Random "<< randP << &endl;
-    if (randP < bipThrottle) {
-        cout << "Calling Move to Head from Insert : Traditional LRU" <<&endl;
+    // cout << "Associativity" << assoc << "BIP" << " Random "<< randP << &endl;
+    if (randP <= bipThrottle) {
+        // cout << "Calling Move to Head from Insert : Traditional LRU" <<&endl;
         sets[set].moveToHead(blk);      //  Shifting new inserted block to MRU location
-        cout << "Inserted At Head" <<&endl;
+        // cout << "Inserted At Head" <<&endl;
     } else {
-        cout << "Calling Move to Tail from Insert : LIP" <<&endl;
-        sets[set].moveToTail(blk);      //  Shifting new inserted block to LRU location
-        cout << "Inserted At Tail" <<&endl;
+        // cout << "Calling Move to Tail from Insert : LIP" <<&endl;
+        sets[set].blks[assoc-1]=blk;    //  Shifting new inserted block to LRU location
+        // cout << "Inserted At Tail" <<&endl;
     }
     
 }

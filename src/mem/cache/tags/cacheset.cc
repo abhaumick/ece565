@@ -73,7 +73,7 @@ CacheSet::moveToHead(CacheBlk *blk)
 void
 CacheSet::moveToTail(CacheBlk *blk)
 {
-    cout << " Move to Tail Called "<< "Assoc : "<< assoc << &endl;
+    // cout << " Move to Tail Called "<< "Assoc : "<< assoc << &endl;
     // nothing to do if blk is already tail
     if (blks[assoc-1] == blk)  
         return;

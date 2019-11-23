@@ -201,7 +201,7 @@ LIP::insertBlock(Addr addr, BlkType *blk, int master_id)
     blk->srcMasterId = master_id;
 
     unsigned set = extractSet(addr);
-    sets[set].moveToTail(blk);      //  Shifting new inserted block to LRU location
+    sets[set].blks[assoc-1]=blk;      //  Shifting new inserted block to LRU location
 }
 
 void
