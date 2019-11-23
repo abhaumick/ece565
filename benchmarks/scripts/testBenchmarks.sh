@@ -24,61 +24,61 @@ cacheOptions="--l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16"
 
 ## Runtime Options
 
-warmupCount=200000000
+warmupCount=2000
 
-fastFwdCount=1000000000
+fastFwdCount=10000
 
 ## Project Options
 
 bipThrottle=(
 		1.00000
-		0.03125
-		0.00000
+		# 0.03125
+		# 0.00000
 	    )
 
 ## Benchmark Options
 
-folder="benchmarks/bip-Warm200M/"
+folder="benchmarks/test/"
 
-maxinsts="1000000000"
+maxinsts="100000"
 
 
 listOfBenchmarks=(
+                    # "mcf"
+                    # "bzip2"
+                    # "specrand_i"
+                    # "specrand_f"
                     "mcf"
+                    "perlbench"
                     "bzip2"
+                    "gcc"
+                    "bwaves"
+                    "gamess"
+                    "milc"
+                    "zeusmp"
+                    "gromacs"
+                    "cactusADM"
+                    "leslie3d"
+                    "namd"
+                    "gobmk"
+                    "dealII"
+                    "soplex"
+                    "povray"
+                    "calculix"
+                    "hmmer"
+                    "sjeng"
+                    "GemsFDTD"
+                    "libquantum"
+                    "h264ref"
+                    "tonto"
+                    "lbm"
+                    "omnetpp"
+                    "astar"
+                    "wrf"
+                    "sphinx3"
+                    "xalancbmk"
                     "specrand_i"
                     "specrand_f"
-                    #"mcf"
-                    #"perlbench"
-                    #"bzip2"
-                    #"gcc"
-                    #"bwaves"
-                    #"gamess"
-                    #"milc"
-                    #"zeusmp"
-                    #"gromacs"
-                    #"cactusADM"
-                    #"leslie3d"
-                    #"namd"
-                    #"gobmk"
-                    #"dealII"
-                    #"soplex"
-                    #"povray"
-                    #"calculix"
-                    #"hmmer"
-                    #"sjeng"
-                    #"GemsFDTD"
-                    #"libquantum"
-                    #"h264ref"
-                    #"tonto"
-                    #"lbm"
-                    #"omnetpp"
-                    #"astar"
-                    #"wrf"
-                    #"sphinx3"
-                    #"xalancbmk"
-                    #"specrand_i"
-                    #"specrand_f"
                  )
 
 for program in "${listOfBenchmarks[@]}"; do
