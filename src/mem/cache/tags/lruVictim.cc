@@ -34,6 +34,7 @@
  */
 
 #include <string>
+#include <iomanip>
 
 #include "base/intmath.hh"
 #include "debug/CacheRepl.hh"
@@ -108,17 +109,21 @@ LRUVictim::LRUVictim(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
         }
     }
 
-    //  Check if vitimSize > 0
+    //  Check if victimSize > 0
     if (victimSize != 0)
     {
-        DPRINTF(CacheRepl, "Building VictimCache with %d blocks\n", victimSize);
-        victimCache = new BlkType[victimSize];
+        DPRINTF(CacheRepl, "Building VictimCache with %d block\n", victimSize);
+        victimCacheBlks = new BlkType[victimSize];
 
         victimDataBlks = new uint8_t[victimSize * blkSize];
 
+        victimCache = new CacheSet;
+        victimCache->assoc = victimSize;
+        victimCache->blks = new BlkType*[victimSize];
+
         for (unsigned j = 0; j < victimSize; j++)
         {
-            BlkType *blk = &victimCache[j];
+            BlkType *blk = &victimCacheBlks[j];
             blk->data = &victimDataBlks[blkSize*j];
 
             blk->invalidate();
@@ -129,7 +134,7 @@ LRUVictim::LRUVictim(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
             blk->whenReady = 0;
             blk->isTouched = false;
             blk->size = blkSize;
-            victimCache[j]=blk;
+            victimCache->blks[j]=blk;
             blk->set = 0;
         }
         
@@ -150,7 +155,7 @@ LRUVictim::~LRUVictim()
 LRUVictim::BlkType*
 LRUVictim::accessBlock(Addr addr, int &lat, int master_id)
 {
-    cout << "VictimCache : accessBlock" << endl;
+    cout << "VictimCache : accessBlock : Addr " << addr << endl;
     Addr tag = extractTag(addr);
     unsigned set = extractSet(addr);
     BlkType *blk = sets[set].findBlk(tag);
@@ -174,7 +179,7 @@ LRUVictim::accessBlock(Addr addr, int &lat, int master_id)
 LRUVictim::BlkType*
 LRUVictim::findBlock(Addr addr) const
 {
-    cout << "VictimCache : findBlock" << endl;
+    //cout << "VictimCache : findBlock Addr" << addr << endl;
     Addr tag = extractTag(addr);
     unsigned set = extractSet(addr);
     BlkType *blk = sets[set].findBlk(tag);
@@ -184,7 +189,7 @@ LRUVictim::findBlock(Addr addr) const
 LRUVictim::BlkType*
 LRUVictim::findVictim(Addr addr, PacketList &writebacks)
 {
-    cout << "VictimCache : findVictim" << endl;
+    cout << "VictimCache : findVictim Addr" << addr << endl;
     unsigned set = extractSet(addr);
     // grab a replacement candidate
     BlkType *blk = sets[set].blks[assoc-1];
@@ -193,13 +198,26 @@ LRUVictim::findVictim(Addr addr, PacketList &writebacks)
         DPRINTF(CacheRepl, "set %x: selecting blk %x for replacement\n",
                 set, regenerateBlkAddr(blk->tag, set));
     }
+
+    if (victimSize != 0)
+    {
+        printSet(set);
+        printVictimCache();
+
+        BlkType *victimBlk = sets[set].blks[assoc-1];
+        victimCache->blks[victimCache->assoc-1] = victimBlk;
+        victimCache->moveToHead( victimBlk );
+
+        printVictimCache();
+    }
+
     return blk;
 }
 
 void
 LRUVictim::insertBlock(Addr addr, BlkType *blk, int master_id)
 {
-    cout << "VictimCache : insertBlock" << endl;
+    cout << "VictimCache " << victimCache->assoc << " : insertBlock Addr " << addr << endl;
     if (!blk->isTouched) {
         tagsInUse++;
         blk->isTouched = true;
@@ -237,9 +255,11 @@ LRUVictim::insertBlock(Addr addr, BlkType *blk, int master_id)
 
     unsigned set = extractSet(addr);
 
-    sets[set].blks
-
+    printSet(set);
     sets[set].moveToHead(blk);
+
+    printSet(set);
+
 }
 
 void
@@ -275,4 +295,40 @@ LRUVictim::cleanupRefs()
             ++sampledRefs;
         }
     }
+}
+
+void LRUVictim::printVictimCache()
+{
+    cout << "Victim Cache : " << victimCache->assoc << " Blocks : " << endl;
+    for (size_t i = 0; i < victimCache->assoc; i++)
+    {
+        BlkType *blk = victimCache->blks[i];
+        cout << "  Tag : " << hex << setw(4) << setfill('0') << blk->tag << "  ";
+        cout << "  Set : " << hex << setw(4) << setfill('0') << blk->set << "  ";
+        cout << "  Data : " << setw(3) << setfill('0') << blk->data[0] << "  ";
+        cout << "  " << setw(2) << setfill('0') << blk->data[1] << "  ";
+        cout << "  " << setw(2) << setfill('0') << blk->data[2] << "  ";
+        cout << "  " << setw(2) << setfill('0') << blk->data[3] << "  ";
+        cout << endl;
+    }
+    cout << endl;
+    
+}
+
+void LRUVictim::printSet( unsigned setIndex )
+{
+    cout << "Set " << setIndex << " : " << endl;
+    for (size_t i = 0; i < assoc; i++)
+    {
+        BlkType *blk = sets[setIndex].blks[i];
+        cout << "  Tag : " << hex << setw(4) << setfill('0') << blk->tag << "  ";
+        cout << "  Set : " << hex << setw(4) << setfill('0') << blk->set << "  ";
+        cout << "  Data : " << setw(3) << setfill('0') << blk->data[0] << "  ";
+        cout << "  " << setw(2) << setfill('0') << blk->data[1] << "  ";
+        cout << "  " << setw(2) << setfill('0') << blk->data[2] << "  ";
+        cout << "  " << setw(2) << setfill('0') << blk->data[3] << "  ";
+        cout << endl;
+    }
+    cout << endl;
+    
 }

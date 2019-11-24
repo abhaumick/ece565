@@ -79,6 +79,16 @@ class LRUVictim : public BaseTags
     BlkType *blks;
     /** The data blocks, 1 per cache block. */
     uint8_t *dataBlks;
+    
+
+    /** The victim cache. */
+    CacheSet *victimCache;
+    /** The victim cache blocks. */
+    BlkType *victimCacheBlks;
+    /** The victim cache data blocks, 1 per cache block. */
+    uint8_t *victimDataBlks;
+
+
 
     /** The amount to shift the address to get the set. */
     int setShift;
@@ -238,6 +248,11 @@ public:
      * Called at end of simulation to complete average block reference stats.
      */
     virtual void cleanupRefs();
+
+protected:
+
+    void printVictimCache();
+    void printSet( unsigned setIndex );
 };
 
 #endif // __MEM_CACHE_TAGS_LRU_VICTIM_HH__
