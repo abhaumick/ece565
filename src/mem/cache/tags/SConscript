@@ -39,6 +39,7 @@ Source('iic.cc')
 Source('lru.cc')
 Source('lip.cc')
 Source('bip.cc')
+Source('lruVictim.cc')
 Source('cacheset.cc')
 
 SimObject('iic_repl/Repl.py')

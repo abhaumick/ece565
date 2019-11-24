@@ -64,4 +64,7 @@ class BaseCache(MemObject):
     mem_side = MasterPort("Port on side closer to MEM")
     addr_ranges = VectorParam.AddrRange([AllMemory], "The address range for the CPU-side port")
     system = Param.System(Parent.any, "System we belong to")
+    # Added Options for Cache Insertion Policy Changes 
     bip_throttle=Param.Float(1.00, "Bimodal Throttle Parameter")
+    l1_victim=Param.Int(0, "Implementing Victim Cache for L1")
+    l2_victim=Param.Int(0, "Implementing Victim Cache for L2")

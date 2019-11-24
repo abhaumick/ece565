@@ -46,6 +46,9 @@
 #if defined(USE_CACHE_LRU)
 #include "mem/cache/tags/lru.hh"
 #endif
+#if defined(USE_CACHE_LRUVICTIM)
+#include "mem/cache/tags/lruVictim.hh"
+#endif
 
 #if defined(USE_CACHE_LIP)
 #include "mem/cache/tags/lip.hh"
@@ -111,6 +114,19 @@ using namespace std;
 #define BUILD_BIP_CACHE BUILD_CACHE_PANIC("bip cache")
 #endif
 
+#if defined(USE_CACHE_LRUVICTIM)
+#define BUILD_LRUVICTIM_L1_CACHE do {                                            \
+        LRUVictim *tags = new LRUVictim(numSets, block_size, assoc, hit_latency,l1_victim);  \
+        BUILD_CACHE(LRUVictim, tags);                                         \
+    } while (0)
+#define BUILD_LRUVICTIM_L2_CACHE do {                                            \
+        LRUVictim *tags = new LRUVictim(numSets, block_size, assoc, hit_latency,l2_victim);\
+        BUILD_CACHE(LRUVictim, tags);                                         \
+    } while (0)
+#else
+#define BUILD_LRUVICTIM_CACHE BUILD_CACHE_PANIC("lru victim cache")
+#endif   
+
 #if defined(USE_CACHE_IIC)
 #define BUILD_IIC_CACHE do {                            \
         IIC *tags = new IIC(iic_params);                \
@@ -124,11 +140,15 @@ using namespace std;
         if (repl == NULL) {                             \
             if (numSets == 1) {                         \
                 BUILD_FALRU_CACHE;                      \
-            } else if (assoc == 2) {                  \
+            } else if (assoc == 2 && l1_victim !=0) {           \
+               BUILD_LRUVICTIM_L1_CACHE;                         \
+            } else if (assoc == 2 && l1_victim ==0) {              \
+               BUILD_LRU_CACHE;                                      \
+            } else if (assoc >= 2 && l2_victim !=0) {          \
+               BUILD_LRUVICTIM_L2_CACHE;                       \
+            } else if (assoc >= 2 && l2_victim ==0) {          \
                BUILD_LRU_CACHE;                         \
-            } else {                                    \
-               BUILD_BIP_CACHE;                         \
-            }                                           \
+            }                                          \
         } else {                                        \
             BUILD_IIC_CACHE;                            \
         }                                               \

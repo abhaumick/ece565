@@ -38,7 +38,7 @@
 #include "base/intmath.hh"
 #include "debug/CacheRepl.hh"
 #include "mem/cache/tags/cacheset.hh"
-#include "mem/cache/tags/LRUVictim.hh"
+#include "mem/cache/tags/lruVictim.hh"
 #include "mem/cache/base.hh"
 #include "sim/core.hh"
 
@@ -46,10 +46,11 @@ using namespace std;
 
 // create and initialize a LRUVictim/MRU cache structure
 LRUVictim::LRUVictim(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
-         unsigned _hit_latency)
+         unsigned _hit_latency, unsigned _victimSize)
     : numSets(_numSets), blkSize(_blkSize), assoc(_assoc),
-      hitLatency(_hit_latency)
+      hitLatency(_hit_latency), victimSize(_victimSize)
 {
+    cout << "Associativity : "<< assoc << "victimSIZE : " << victimSize << &endl;
     // Check parameters
     if (blkSize < 4 || !isPowerOf2(blkSize)) {
         fatal("Block size must be at least 4 and a power of 2");

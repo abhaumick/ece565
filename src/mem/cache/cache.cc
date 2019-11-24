@@ -48,6 +48,9 @@
 #if defined(USE_CACHE_BIP)
 #include "mem/cache/tags/bip.hh"
 #endif
+#if defined(USE_CACHE_LRUVICTIM)
+#include "mem/cache/tags/lruVictim.hh"
+#endif
 #if defined(USE_CACHE_FALRU)
 #include "mem/cache/tags/fa_lru.hh"
 #endif
@@ -79,6 +82,9 @@ template class Cache<LIP>;
 #endif
 #if defined(USE_CACHE_BIP)
 template class Cache<BIP>;
+#endif
+#if defined(USE_CACHE_LRUVICTIM)
+template class Cache<LRUVictim>;
 #endif
 
 #endif //DOXYGEN_SHOULD_SKIP_THIS

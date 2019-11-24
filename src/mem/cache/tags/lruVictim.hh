@@ -69,6 +69,8 @@ class LRUVictim : public BaseTags
     const unsigned assoc;
     /** The hit latency. */
     const unsigned hitLatency;
+    /** The Victim Cache Size. */
+    const unsigned victimSize;
 
     /** The cache sets. */
     CacheSet *sets;
@@ -94,9 +96,10 @@ public:
      * @param _blkSize The number of bytes in a block.
      * @param _assoc The associativity of the cache.
      * @param _hit_latency The latency in cycles for a hit.
+     * @param _victimSize The size of victim cache if used.
      */
     LRUVictim(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
-        unsigned _hit_latency);
+        unsigned _hit_latency, unsigned _victimSize);
 
     /**
      * Destructor
