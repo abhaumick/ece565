@@ -69,7 +69,7 @@ class LRUVictim : public BaseTags
     const unsigned assoc;
     /** The hit latency. */
     const unsigned hitLatency;
-    /** The Victim Cache Size. */
+    /** The number of blocks in victim cache. */
     const unsigned victimSize;
 
     /** The cache sets. */

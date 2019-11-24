@@ -50,7 +50,7 @@ LRUVictim::LRUVictim(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
     : numSets(_numSets), blkSize(_blkSize), assoc(_assoc),
       hitLatency(_hit_latency), victimSize(_victimSize)
 {
-    cout << "Associativity : "<< assoc << "victimSIZE : " << victimSize << &endl;
+    cout << "Associativity : "<< assoc << "victimSIZE : " << victimSize << endl;
     // Check parameters
     if (blkSize < 4 || !isPowerOf2(blkSize)) {
         fatal("Block size must be at least 4 and a power of 2");
@@ -107,10 +107,41 @@ LRUVictim::LRUVictim(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
             blk->set = i;
         }
     }
+
+    //  Check if vitimSize > 0
+    if (victimSize != 0)
+    {
+        DPRINTF(CacheRepl, "Building VictimCache with %d blocks\n", victimSize);
+        victimCache = new BlkType[victimSize];
+
+        victimDataBlks = new uint8_t[victimSize * blkSize];
+
+        for (unsigned j = 0; j < victimSize; j++)
+        {
+            BlkType *blk = &victimCache[j];
+            blk->data = &victimDataBlks[blkSize*j];
+
+            blk->invalidate();
+
+            // Setting the tag to j is just to prevent long chains in the hash
+            // table; won't matter because the block is invalid
+            blk->tag = j;
+            blk->whenReady = 0;
+            blk->isTouched = false;
+            blk->size = blkSize;
+            victimCache[j]=blk;
+            blk->set = 0;
+        }
+        
+
+    }
+
 }
 
 LRUVictim::~LRUVictim()
 {
+    delete [] victimDataBlks;
+    delete [] victimCache;
     delete [] dataBlks;
     delete [] blks;
     delete [] sets;
@@ -119,6 +150,7 @@ LRUVictim::~LRUVictim()
 LRUVictim::BlkType*
 LRUVictim::accessBlock(Addr addr, int &lat, int master_id)
 {
+    cout << "VictimCache : accessBlock" << endl;
     Addr tag = extractTag(addr);
     unsigned set = extractSet(addr);
     BlkType *blk = sets[set].findBlk(tag);
@@ -142,6 +174,7 @@ LRUVictim::accessBlock(Addr addr, int &lat, int master_id)
 LRUVictim::BlkType*
 LRUVictim::findBlock(Addr addr) const
 {
+    cout << "VictimCache : findBlock" << endl;
     Addr tag = extractTag(addr);
     unsigned set = extractSet(addr);
     BlkType *blk = sets[set].findBlk(tag);
@@ -151,6 +184,7 @@ LRUVictim::findBlock(Addr addr) const
 LRUVictim::BlkType*
 LRUVictim::findVictim(Addr addr, PacketList &writebacks)
 {
+    cout << "VictimCache : findVictim" << endl;
     unsigned set = extractSet(addr);
     // grab a replacement candidate
     BlkType *blk = sets[set].blks[assoc-1];
@@ -165,6 +199,7 @@ LRUVictim::findVictim(Addr addr, PacketList &writebacks)
 void
 LRUVictim::insertBlock(Addr addr, BlkType *blk, int master_id)
 {
+    cout << "VictimCache : insertBlock" << endl;
     if (!blk->isTouched) {
         tagsInUse++;
         blk->isTouched = true;
@@ -201,12 +236,16 @@ LRUVictim::insertBlock(Addr addr, BlkType *blk, int master_id)
     blk->srcMasterId = master_id;
 
     unsigned set = extractSet(addr);
+
+    sets[set].blks
+
     sets[set].moveToHead(blk);
 }
 
 void
 LRUVictim::invalidate(BlkType *blk)
 {
+    cout << "VictimCache : invalidate" << endl;
     assert(blk);
     assert(blk->isValid());
     tagsInUse--;
