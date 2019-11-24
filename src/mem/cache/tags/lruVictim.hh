@@ -71,6 +71,8 @@ class LRUVictim : public BaseTags
     const unsigned hitLatency;
     /** The number of blocks in victim cache. */
     const unsigned victimSize;
+    /** The number of blocks in victim cache. */
+    unsigned victimHitLatency;
 
     /** The cache sets. */
     CacheSet *sets;
@@ -250,6 +252,9 @@ public:
     virtual void cleanupRefs();
 
 protected:
+
+    void inline copyBlocktoVictimCache( unsigned set, unsigned blockIndex, unsigned victimCacheIndex );
+    void inline copyBlockfromVictimCache( unsigned set, unsigned blockIndex, unsigned victimCacheIndex );
 
     void printVictimCache();
     void printSet( unsigned setIndex );
