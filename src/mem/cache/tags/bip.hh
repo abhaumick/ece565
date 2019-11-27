@@ -238,6 +238,8 @@ public:
      * Called at end of simulation to complete average block reference stats.
      */
     virtual void cleanupRefs();
+protected:
+    void printSet( unsigned setIndex );
 };
 
 #endif // __MEM_CACHE_TAGS_BIP_HH__
