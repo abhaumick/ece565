@@ -34,6 +34,7 @@
  */
 
 #include <string>
+#include <iomanip>
 
 #include "base/intmath.hh"
 #include "debug/CacheRepl.hh"
@@ -125,7 +126,11 @@ LIP::accessBlock(Addr addr, int &lat, int master_id)
     lat = hitLatency;
     if (blk != NULL) {
         // move this block to head of the MRU list
+        cout << "Access Block" << " : Block Addr " << addr << endl;
+        printSet(set);
+        
         sets[set].moveToHead(blk);
+        printSet(set);
         DPRINTF(CacheRepl, "set %x: moving blk %x to MRU\n",
                 set, regenerateBlkAddr(tag, set));
         if (blk->whenReady > curTick()
@@ -151,10 +156,12 @@ LIP::findBlock(Addr addr) const
 LIP::BlkType*
 LIP::findVictim(Addr addr, PacketList &writebacks)
 {
+    //cout << "Finding Victim " << " : Block Addr " << addr << endl;
     unsigned set = extractSet(addr);
     // grab a replacement candidate
     BlkType *blk = sets[set].blks[assoc-1];
-
+    //printSet(set);
+    
     if (blk->isValid()) {
         DPRINTF(CacheRepl, "set %x: selecting blk %x for replacement\n",
                 set, regenerateBlkAddr(blk->tag, set));
@@ -199,9 +206,14 @@ LIP::insertBlock(Addr addr, BlkType *blk, int master_id)
     assert(master_id < cache->system->maxMasters());
     occupancies[master_id]++;
     blk->srcMasterId = master_id;
-
     unsigned set = extractSet(addr);
-    sets[set].blks[assoc-1]=blk;      //  Shifting new inserted block to LRU location
+    //cout << "Set Before LIP" << " : Block Addr " << addr << endl;
+    //printSet(set);
+    sets[set].insertLRU(blk);      //  Shifting new inserted block to LRU location
+    //sets[set].moveToHead(blk);
+    
+    //cout << "Set After LIP" << " : Block Addr " << addr << endl;
+    //printSet(set);
 }
 
 void
@@ -236,4 +248,23 @@ LIP::cleanupRefs()
             ++sampledRefs;
         }
     }
+}
+void LIP::printSet( unsigned setIndex )
+{
+    cout << "Set " << setIndex << " : " << endl;
+    for (size_t i = 0; i < assoc; i++)
+    {
+        BlkType *blk = sets[setIndex].blks[i];
+        cout << "  Tag : " << hex << setw(4) << setfill('0') << blk->tag << "  ";
+        cout << "  Set : " << hex << setw(4) << setfill('0') << blk->set << "  ";
+        cout << "  Addr : " << hex << setw(4) << setfill('0') << regenerateBlkAddr(blk->tag, blk->set) << "  ";
+        cout << "  Data : " << setw(3) << setfill('0') << blk->data[0] << "  ";
+        cout << "  " << setw(2) << setfill('0') << blk->data[1] << "  ";
+        cout << "  " << setw(2) << setfill('0') << blk->data[2] << "  ";
+        cout << "  " << setw(2) << setfill('0') << blk->data[3] << "  ";
+        cout << "  " << blk->isValid() << "  ";
+        cout << endl;
+    }
+    cout << endl;
+    
 }

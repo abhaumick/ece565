@@ -71,6 +71,7 @@ class CacheSet
      * @param blk The block to move
      */
     void moveToTail(CacheBlk *blk);
+    void insertLRU(CacheBlk *blk);
 
 };
 

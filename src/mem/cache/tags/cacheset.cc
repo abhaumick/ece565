@@ -94,4 +94,8 @@ CacheSet::moveToTail(CacheBlk *blk)
         --i;
     } while (next != blk);
 }
-
+void
+CacheSet::insertLRU(CacheBlk *blk)
+{
+    blks[assoc-1] = blk;
+}

@@ -24,9 +24,10 @@ cacheOptions="--l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16"
 
 ## Runtime Options
 
-warmupCount=100000000
+warmupCount="500000000"
 
-fastFwdCount=14750000000
+fastFwdCount="14750000000"
+standardSwitch="500000000"
 
 ## Project Options
 
@@ -40,7 +41,7 @@ bipThrottle=(
 
 folder="benchmarks/mcf-14B75_14B85/"
 
-maxinsts="100000000"
+maxinsts="1000000000"
 
 
 listOfBenchmarks=(
@@ -55,7 +56,7 @@ for program in "${listOfBenchmarks[@]}"; do
 
     for throttle in "${bipThrottle[@]}"; do
 
-    	$gem5opt -d $folder$program/$throttle $pathToRunPy $options $cacheOptions -b $program --standard-switch 1 --maxinsts=$maxinsts -F $fastFwdCount -W $warmupCount --bip_throttle $throttle
+    	$gem5opt -d $folder$program/$throttle $pathToRunPy $options $cacheOptions -b $program --standard-switch=$standardSwitch --maxinsts=$maxinsts --fast-forward=$fastFwdCount --warmup-insts=$warmupCount --bip_throttle=$throttle
 
     done
 

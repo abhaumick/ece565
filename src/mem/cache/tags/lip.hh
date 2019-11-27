@@ -235,6 +235,8 @@ public:
      * Called at end of simulation to complete average block reference stats.
      */
     virtual void cleanupRefs();
+public:
+    void printSet( unsigned setIndex );
 };
 
 #endif // __MEM_CACHE_TAGS_LIP_HH__
