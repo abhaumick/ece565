@@ -42,7 +42,7 @@ def config_cache(options, system):
         else:
             system.l2 = L2Cache(size = options.l2_size, assoc = options.l2_assoc,
                                 block_size=options.cacheline_size, bip_throttle=options.bip_throttle,
-                                l1_victim=options.l1_victim,l2_victim=options.l2_victim)
+                                l2_victim=options.l2_victim)
 
         system.tol2bus = CoherentBus()
         system.l2.cpu_side = system.tol2bus.master
@@ -61,11 +61,11 @@ def config_cache(options, system):
                 icache = L1Cache(size = options.l1i_size,
                                  assoc = options.l1i_assoc,
                                  block_size=options.cacheline_size, bip_throttle=1,
-                                 l1_victim=options.l1_victim,l2_victim=options.l2_victim)
+                                 l1_victim=options.l1i_victim,l2_victim=options.l2_victim)
                 dcache = L1Cache(size = options.l1d_size,
                                  assoc = options.l1d_assoc,
                                  block_size=options.cacheline_size, bip_throttle=1,
-                                 l1_victim=options.l1_victim,l2_victim=options.l2_victim)
+                                 l1_victim=options.l1d_victim,l2_victim=options.l2_victim)
 
             if buildEnv['TARGET_ISA'] == 'x86':
                 system.cpu[i].addPrivateSplitL1Caches(icache, dcache,

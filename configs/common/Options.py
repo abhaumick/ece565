@@ -64,7 +64,8 @@ def addCommonOptions(parser):
 
     # Added Options for Cache Insertion Policy Changes                 
     parser.add_option("--bip_throttle", type="float", default=1.00)
-    parser.add_option("--l1_victim", type="int", default=0)
+    parser.add_option("--l1i_victim", type="int", default=0)
+    parser.add_option("--l1d_victim", type="int", default=0)
     parser.add_option("--l2_victim", type="int", default=0)
     # Run duration options
     parser.add_option("-m", "--maxtick", type="int", default=m5.MaxTick,
