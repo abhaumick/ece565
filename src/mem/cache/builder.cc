@@ -143,7 +143,7 @@ using namespace std;
             } else if (assoc == 2 && l1_victim !=0) {           \
                BUILD_LRUVICTIM_L1_CACHE;                         \
             } else if (assoc == 2 && l1_victim ==0) {              \
-               BUILD_LRU_CACHE;                                      \
+               BUILD_BIP_CACHE;                                      \
             } else if (assoc >= 2 && l2_victim !=0) {          \
                BUILD_LRUVICTIM_L2_CACHE;                       \
             } else if (assoc >= 2 && l2_victim ==0) {          \

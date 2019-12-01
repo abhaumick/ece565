@@ -30,27 +30,31 @@
 
 /**
  * @file
- * Definitions of LIP tag store.
+ * Definitions of DIP tag store.
  */
 
 #include <string>
+#include <stdlib.h>
+#include <iostream>
 #include <iomanip>
 
 #include "base/intmath.hh"
 #include "debug/CacheRepl.hh"
 #include "mem/cache/tags/cacheset.hh"
-#include "mem/cache/tags/lip.hh"
+#include "mem/cache/tags/dip.hh"
 #include "mem/cache/base.hh"
 #include "sim/core.hh"
 
+
 using namespace std;
 
-// create and initialize a LIP/MRU cache structure
-LIP::LIP(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
-         unsigned _hit_latency)
+// create and initialize a DIP/MRU cache structure
+DIP::DIP(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
+         unsigned _hit_latency, double _dip_throttle)
     : numSets(_numSets), blkSize(_blkSize), assoc(_assoc),
-      hitLatency(_hit_latency)
+      hitLatency(_hit_latency), dipThrottle(_dip_throttle)
 {
+    cout << "DIP Associativity:"<< assoc << "dipThrottle" << dipThrottle << &endl;
     // Check parameters
     if (blkSize < 4 || !isPowerOf2(blkSize)) {
         fatal("Block size must be at least 4 and a power of 2");
@@ -107,18 +111,18 @@ LIP::LIP(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
             blk->set = i;
         }
     }
-    cout << "LIP Cache Constructed !" << endl;
+    // cout << "DIP Cache Constructed !" << endl;
 }
 
-LIP::~LIP()
+DIP::~DIP()
 {
     delete [] dataBlks;
     delete [] blks;
     delete [] sets;
 }
 
-LIP::BlkType*
-LIP::accessBlock(Addr addr, int &lat, int master_id)
+DIP::BlkType*
+DIP::accessBlock(Addr addr, int &lat, int master_id)
 {
     Addr tag = extractTag(addr);
     unsigned set = extractSet(addr);
@@ -126,11 +130,16 @@ LIP::accessBlock(Addr addr, int &lat, int master_id)
     lat = hitLatency;
     if (blk != NULL) {
         // move this block to head of the MRU list
-        // cout << "Access Block" << " : Block Addr " << addr << endl;
-        // printSet(set);
+        if (set == 0x390)
+        {
+            cout << "Access Block" << " : Block Addr " << addr << endl;
+        }
         
         sets[set].moveToHead(blk);
-        // printSet(set);
+        if (set == 0x390)
+        {
+            // printSet(set);
+        }
         DPRINTF(CacheRepl, "set %x: moving blk %x to MRU\n",
                 set, regenerateBlkAddr(tag, set));
         if (blk->whenReady > curTick()
@@ -144,8 +153,8 @@ LIP::accessBlock(Addr addr, int &lat, int master_id)
 }
 
 
-LIP::BlkType*
-LIP::findBlock(Addr addr) const
+DIP::BlkType*
+DIP::findBlock(Addr addr) const
 {
     Addr tag = extractTag(addr);
     unsigned set = extractSet(addr);
@@ -153,39 +162,39 @@ LIP::findBlock(Addr addr) const
     return blk;
 }
 
-LIP::BlkType*
-LIP::findVictim(Addr addr, PacketList &writebacks)
+DIP::BlkType*
+DIP::findVictim(Addr addr, PacketList &writebacks)
 {
-    cout << "Finding Victim " << " : Block Addr " << addr << endl;
     unsigned set = extractSet(addr);
+    // cout << "Finding Victim " << " : Block Addr " << addr << endl;
     // grab a replacement candidate
-    BlkType *blk;
-    bool invalidVictimFound = false;
-    for (size_t j = assoc-1; j >= 0; j--)
-    {
-        blk = sets[set].blks[j];
-        if (!blk->isValid())
-        {
-            invalidVictimFound = true;
-            break;
-        }
-    }
-    if (!invalidVictimFound)
-    {
-        blk = sets[set].blks[assoc-1];
-    }
-    
-    printSet(set);
-    
+    BlkType *blk = sets[set].blks[assoc-1];
+
     if (blk->isValid()) {
         DPRINTF(CacheRepl, "set %x: selecting blk %x for replacement\n",
                 set, regenerateBlkAddr(blk->tag, set));
     }
+    // bool invalidVictimFound = false;
+    int j;
+
+    for (j = assoc-1; j >= 0; j--)
+    {
+        // cout << "travesring set @ " << j << endl ;
+        blk = sets[set].blks[j];
+        if (!blk->isValid())
+        {
+            // cout << "Block " << j << " invalid " << endl;
+            sets[set].moveToTail(blk);
+            break;
+        }
+    }
+    // cout << "Here .. " << endl;
+    blk = sets[set].blks[assoc-1];
     return blk;
 }
 
 void
-LIP::insertBlock(Addr addr, BlkType *blk, int master_id)
+DIP::insertBlock(Addr addr, BlkType *blk, int master_id)
 {
     if (!blk->isTouched) {
         tagsInUse++;
@@ -221,18 +230,42 @@ LIP::insertBlock(Addr addr, BlkType *blk, int master_id)
     assert(master_id < cache->system->maxMasters());
     occupancies[master_id]++;
     blk->srcMasterId = master_id;
+
     unsigned set = extractSet(addr);
-    cout << "Set Before LIP" << " : Block Addr " << addr << endl;
-    printSet(set);
-    sets[set].insertLRU(blk);      //  Shifting new inserted block to LRU location
-    //sets[set].moveToHead(blk);
+    //uniform_int_distribution dis(0.0, 1.0);
     
-    cout << "Set After LIP" << " : Block Addr " << addr << endl;
-    printSet(set);
+
+    //  Filter LRU and LIP Lead Sets
+    if (set % dipSetInterval == 0)
+    {
+        //  LRU Set
+        sets[set].moveToHead(blk);      //  Shifting new inserted block to MRU location
+    }
+    else if (set % dipSetInterval == dipSetInteval -1 )
+    {
+        //  LIP Set
+        sets[set].insertLRU(blk);   //  Shifting new inserted block to LRU location
+    }
+    else
+    {
+        //  Follower Set
+    }
+    
+
+    
+    double randP= ((double)rand())/(RAND_MAX);
+
+    // cout << "Associativity" << assoc << "BIP" << " Random "<< randP << &endl;
+    if (randP <= dipThrottle) {
+        // cout << "Calling Move to Head from Insert : Traditional LRU" <<&endl;
+    } else {
+        // cout << "Calling Move to Tail from Insert : LIP" <<&endl;
+        //sets[set].blks[assoc-1]=blk;  
+    }
 }
 
 void
-LIP::invalidate(BlkType *blk)
+DIP::invalidate(BlkType *blk)
 {
     assert(blk);
     assert(blk->isValid());
@@ -244,10 +277,15 @@ LIP::invalidate(BlkType *blk)
     // should be evicted before valid blocks
     unsigned set = blk->set;
     sets[set].moveToTail(blk);
+    // if (set == 0x390)
+    // {
+    //     printSet(set);
+    //     cout << "Invalidate : " << regenerateBlkAddr(blk->tag, blk->set) << endl;
+    // }
 }
 
 void
-LIP::clearLocks()
+DIP::clearLocks()
 {
     for (int i = 0; i < numBlocks; i++){
         blks[i].clearLoadLocks();
@@ -255,7 +293,7 @@ LIP::clearLocks()
 }
 
 void
-LIP::cleanupRefs()
+DIP::cleanupRefs()
 {
     for (unsigned i = 0; i < numSets*assoc; ++i) {
         if (blks[i].isValid()) {
@@ -264,7 +302,7 @@ LIP::cleanupRefs()
         }
     }
 }
-void LIP::printSet( unsigned setIndex )
+void DIP::printSet( unsigned setIndex )
 {
     cout << "Set " << setIndex << " : " << endl;
     for (size_t i = 0; i < assoc; i++)
@@ -278,6 +316,7 @@ void LIP::printSet( unsigned setIndex )
         cout << "  " << setw(2) << setfill('0') << blk->data[2] << "  ";
         cout << "  " << setw(2) << setfill('0') << blk->data[3] << "  ";
         cout << "  " << blk->isValid() << "  ";
+        cout << "  " << setw(2) << setfill('0') << blk->status;
         cout << endl;
     }
     cout << endl;

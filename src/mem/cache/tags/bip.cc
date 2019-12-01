@@ -130,10 +130,16 @@ BIP::accessBlock(Addr addr, int &lat, int master_id)
     lat = hitLatency;
     if (blk != NULL) {
         // move this block to head of the MRU list
-        cout << "Access Block" << " : Block Addr " << addr << endl;
-        printSet(set);
+        if (set == 0x390)
+        {
+            cout << "Access Block" << " : Block Addr " << addr << endl;
+        }
+        
         sets[set].moveToHead(blk);
-        printSet(set);
+        if (set == 0x390)
+        {
+            // printSet(set);
+        }
         DPRINTF(CacheRepl, "set %x: moving blk %x to MRU\n",
                 set, regenerateBlkAddr(tag, set));
         if (blk->whenReady > curTick()
@@ -160,6 +166,7 @@ BIP::BlkType*
 BIP::findVictim(Addr addr, PacketList &writebacks)
 {
     unsigned set = extractSet(addr);
+    // cout << "Finding Victim " << " : Block Addr " << addr << endl;
     // grab a replacement candidate
     BlkType *blk = sets[set].blks[assoc-1];
 
@@ -167,6 +174,22 @@ BIP::findVictim(Addr addr, PacketList &writebacks)
         DPRINTF(CacheRepl, "set %x: selecting blk %x for replacement\n",
                 set, regenerateBlkAddr(blk->tag, set));
     }
+    // bool invalidVictimFound = false;
+    int j;
+
+    for (j = assoc-1; j >= 0; j--)
+    {
+        // cout << "travesring set @ " << j << endl ;
+        blk = sets[set].blks[j];
+        if (!blk->isValid())
+        {
+            // cout << "Block " << j << " invalid " << endl;
+            sets[set].moveToTail(blk);
+            break;
+        }
+    }
+    // cout << "Here .. " << endl;
+    blk = sets[set].blks[assoc-1];
     return blk;
 }
 
@@ -211,18 +234,16 @@ BIP::insertBlock(Addr addr, BlkType *blk, int master_id)
     unsigned set = extractSet(addr);
     //uniform_int_distribution dis(0.0, 1.0);
     double randP= ((double)rand())/(RAND_MAX);
+
     // cout << "Associativity" << assoc << "BIP" << " Random "<< randP << &endl;
     if (randP <= bipThrottle) {
         // cout << "Calling Move to Head from Insert : Traditional LRU" <<&endl;
         sets[set].moveToHead(blk);      //  Shifting new inserted block to MRU location
-        // cout << "Inserted At Head" <<&endl;
     } else {
         // cout << "Calling Move to Tail from Insert : LIP" <<&endl;
         //sets[set].blks[assoc-1]=blk;  
         sets[set].insertLRU(blk);   //  Shifting new inserted block to LRU location
-        // cout << "Inserted At Tail" <<&endl;
     }
-    
 }
 
 void
@@ -238,6 +259,11 @@ BIP::invalidate(BlkType *blk)
     // should be evicted before valid blocks
     unsigned set = blk->set;
     sets[set].moveToTail(blk);
+    // if (set == 0x390)
+    // {
+    //     printSet(set);
+    //     cout << "Invalidate : " << regenerateBlkAddr(blk->tag, blk->set) << endl;
+    // }
 }
 
 void
