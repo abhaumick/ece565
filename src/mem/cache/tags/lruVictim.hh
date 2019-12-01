@@ -255,7 +255,6 @@ protected:
 
     void inline copyBlocktoVictimCache( unsigned set, unsigned blockIndex, unsigned victimCacheIndex );
     void inline copyBlockfromVictimCache( unsigned set, unsigned blockIndex, unsigned victimCacheIndex );
-    void inline swapBlockwithVictimCache( unsigned set, unsigned blockIndex, unsigned victimCacheIndex );
 
     void printVictimCache();
     void printSet( unsigned setIndex );
