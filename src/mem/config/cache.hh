@@ -39,4 +39,5 @@
 #define USE_CACHE_IIC 1
 #define USE_CACHE_LIP 1
 #define USE_CACHE_BIP 1
+#define USE_CACHE_DIP 1
 #define USE_CACHE_LRUVICTIM 1

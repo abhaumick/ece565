@@ -202,6 +202,7 @@ BIP::insertBlock(Addr addr, BlkType *blk, int master_id)
         if (!warmedUp && tagsInUse.value() >= warmupBound) {
             warmedUp = true;
             warmupCycle = curTick();
+            cout << "Cache is warmed up here" << endl;
         }
     }
 

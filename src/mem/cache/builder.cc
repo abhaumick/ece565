@@ -56,6 +56,9 @@
 #if defined(USE_CACHE_BIP)
 #include "mem/cache/tags/bip.hh"
 #endif
+#if defined(USE_CACHE_DIP)
+#include "mem/cache/tags/dip.hh"
+#endif
 
 #if defined(USE_CACHE_FALRU)
 #include "mem/cache/tags/fa_lru.hh"
@@ -113,6 +116,14 @@ using namespace std;
 #else
 #define BUILD_BIP_CACHE BUILD_CACHE_PANIC("bip cache")
 #endif
+#if defined(USE_CACHE_DIP)
+#define BUILD_DIP_CACHE do {                                            \
+        DIP *tags = new DIP(numSets, block_size, assoc, hit_latency,bip_throttle);       \
+        BUILD_CACHE(DIP, tags);                                         \
+    } while (0)
+#else
+#define BUILD_DIP_CACHE BUILD_CACHE_PANIC("dip cache")
+#endif
 
 #if defined(USE_CACHE_LRUVICTIM)
 #define BUILD_LRUVICTIM_L1_CACHE do {                                            \
@@ -140,14 +151,10 @@ using namespace std;
         if (repl == NULL) {                             \
             if (numSets == 1) {                         \
                 BUILD_FALRU_CACHE;                      \
-            } else if (assoc == 2 && l1_victim !=0) {           \
-               BUILD_LRUVICTIM_L1_CACHE;                         \
-            } else if (assoc == 2 && l1_victim ==0) {              \
-               BUILD_BIP_CACHE;                                      \
-            } else if (assoc >= 2 && l2_victim !=0) {          \
-               BUILD_LRUVICTIM_L2_CACHE;                       \
-            } else if (assoc >= 2 && l2_victim ==0) {          \
+            } else if (assoc == 2) {                    \
                BUILD_LRU_CACHE;                         \
+            } else {                                    \
+               BUILD_DIP_CACHE;                         \
             }                                          \
         } else {                                        \
             BUILD_IIC_CACHE;                            \

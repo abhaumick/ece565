@@ -51,6 +51,7 @@ LRU::LRU(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
       hitLatency(_hit_latency)
 {
     cout << "Associativity : "<< assoc << "Normal LRU " << &endl;
+
     // Check parameters
     if (blkSize < 4 || !isPowerOf2(blkSize)) {
         fatal("Block size must be at least 4 and a power of 2");

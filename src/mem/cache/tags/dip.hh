@@ -69,10 +69,14 @@ class DIP : public BaseTags
     const unsigned assoc;
     /** The hit latency. */
     const unsigned hitLatency;
-     /** The DIP Throttle Parameter. */
-    const double dipThrottle;
-
-    const int dipSetInterval = 32;
+    /** The BIP Throttle Parameter. */
+    const double bipThrottle;
+    /** The DIP Set Interval. */
+    int dipSetInterval;
+    /** The Policy Selector Parameter. */
+    int PSEL;     
+    /** The PSEL Width. */
+    int PSEL_W;
 
     /** The cache sets. */
     CacheSet *sets;
@@ -98,10 +102,10 @@ public:
      * @param _blkSize The number of bytes in a block.
      * @param _assoc The associativity of the cache.
      * @param _hit_latency The latency in cycles for a hit.
-     * @param _dip_throttle The DIP Throttle Parameter.
+     * @param _bip_throttle The DIP Throttle Parameter.
      */
-    BIP(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
-        unsigned _hit_latency, double _dip_throttle);
+    DIP(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
+        unsigned _hit_latency, double _bip_throttle);
 
     /**
      * Destructor
@@ -119,7 +123,7 @@ public:
     }
 
     /**
-     * Return the subblock size. In the case of BIP it is always the block
+     * Return the subblock size. In the case of DIP it is always the block
      * size.
      * @return The block size.
      */
@@ -244,4 +248,4 @@ protected:
     void printSet( unsigned setIndex );
 };
 
-#endif // __MEM_CACHE_TAGS_BIP_HH__
+#endif // __MEM_CACHE_TAGS_DIP_HH__

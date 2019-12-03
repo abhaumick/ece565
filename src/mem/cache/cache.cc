@@ -48,6 +48,9 @@
 #if defined(USE_CACHE_BIP)
 #include "mem/cache/tags/bip.hh"
 #endif
+#if defined(USE_CACHE_DIP)
+#include "mem/cache/tags/dip.hh"
+#endif
 #if defined(USE_CACHE_LRUVICTIM)
 #include "mem/cache/tags/lruVictim.hh"
 #endif
@@ -82,6 +85,9 @@ template class Cache<LIP>;
 #endif
 #if defined(USE_CACHE_BIP)
 template class Cache<BIP>;
+#endif
+#if defined(USE_CACHE_DIP)
+template class Cache<DIP>;
 #endif
 #if defined(USE_CACHE_LRUVICTIM)
 template class Cache<LRUVictim>;

@@ -35,6 +35,7 @@
 
 #include <string>
 #include <stdlib.h>
+#include <math.h>
 #include <iostream>
 #include <iomanip>
 
@@ -50,11 +51,11 @@ using namespace std;
 
 // create and initialize a DIP/MRU cache structure
 DIP::DIP(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
-         unsigned _hit_latency, double _dip_throttle)
+         unsigned _hit_latency, double _bip_throttle)
     : numSets(_numSets), blkSize(_blkSize), assoc(_assoc),
-      hitLatency(_hit_latency), dipThrottle(_dip_throttle)
+      hitLatency(_hit_latency), bipThrottle(_bip_throttle)
 {
-    cout << "DIP Associativity:"<< assoc << "dipThrottle" << dipThrottle << &endl;
+    cout << "DIP Associativity:"<< assoc << "bipThrottle" << bipThrottle << &endl;
     // Check parameters
     if (blkSize < 4 || !isPowerOf2(blkSize)) {
         fatal("Block size must be at least 4 and a power of 2");
@@ -82,7 +83,9 @@ DIP::DIP(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
     // allocate data storage in one big chunk
     numBlocks = numSets * assoc;
     dataBlks = new uint8_t[numBlocks * blkSize];
-
+    PSEL_W=10;
+    dipSetInterval=32;
+    PSEL = pow(2,PSEL_W)/2;
     unsigned blkIndex = 0;       // index into blks array
     for (unsigned i = 0; i < numSets; ++i) {
         sets[i].assoc = assoc;
@@ -111,7 +114,7 @@ DIP::DIP(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
             blk->set = i;
         }
     }
-    // cout << "DIP Cache Constructed !" << endl;
+    cout << "DIP Cache Constructed !" << PSEL << endl;
 }
 
 DIP::~DIP()
@@ -130,16 +133,7 @@ DIP::accessBlock(Addr addr, int &lat, int master_id)
     lat = hitLatency;
     if (blk != NULL) {
         // move this block to head of the MRU list
-        if (set == 0x390)
-        {
-            cout << "Access Block" << " : Block Addr " << addr << endl;
-        }
-        
         sets[set].moveToHead(blk);
-        if (set == 0x390)
-        {
-            // printSet(set);
-        }
         DPRINTF(CacheRepl, "set %x: moving blk %x to MRU\n",
                 set, regenerateBlkAddr(tag, set));
         if (blk->whenReady > curTick()
@@ -174,10 +168,9 @@ DIP::findVictim(Addr addr, PacketList &writebacks)
         DPRINTF(CacheRepl, "set %x: selecting blk %x for replacement\n",
                 set, regenerateBlkAddr(blk->tag, set));
     }
-    // bool invalidVictimFound = false;
     int j;
 
-    for (j = assoc-1; j >= 0; j--)
+    for (j = assoc-1; j >= 0; j--)  // Removing invalid blocks first from cache
     {
         // cout << "travesring set @ " << j << endl ;
         blk = sets[set].blks[j];
@@ -202,6 +195,8 @@ DIP::insertBlock(Addr addr, BlkType *blk, int master_id)
         if (!warmedUp && tagsInUse.value() >= warmupBound) {
             warmedUp = true;
             warmupCycle = curTick();
+            cout << "Cache is warmed up here" << endl;
+            std::cin.ignore();
         }
     }
 
@@ -233,35 +228,59 @@ DIP::insertBlock(Addr addr, BlkType *blk, int master_id)
 
     unsigned set = extractSet(addr);
     //uniform_int_distribution dis(0.0, 1.0);
-    
+    double randP = ((double)rand())/(RAND_MAX);
 
     //  Filter LRU and LIP Lead Sets
     if (set % dipSetInterval == 0)
     {
-        //  LRU Set
+        // Dedicated LRU Sets
         sets[set].moveToHead(blk);      //  Shifting new inserted block to MRU location
+        PSEL+=1;                        // LRU PSEL Incremented
+        
+        if(PSEL>=pow(2,PSEL_W)) 
+            PSEL = pow(2,PSEL_W)-1;  //Preventing overflow
+        cout << PSEL<< endl;
     }
-    else if (set % dipSetInterval == dipSetInteval -1 )
-    {
-        //  LIP Set
-        sets[set].insertLRU(blk);   //  Shifting new inserted block to LRU location
+    else if (set % dipSetInterval == dipSetInterval -1 )
+    {   
+        // Dedicated BIP Sets
+        if (randP <= bipThrottle) {
+            sets[set].moveToHead(blk);      //  Shifting new inserted block to MRU location
+        } 
+        else {
+            sets[set].insertLRU(blk);   //  Shifting new inserted block to LRU location
+        }
+        PSEL-=1;                    // BIP PSEL Decremented
+
+        if(PSEL<=0) 
+            PSEL = 0;     //Preventing underflow
+        cout << PSEL<< endl;
     }
     else
     {
-        //  Follower Set
-    }
-    
+        //  Follower Sets Decided By MSB of 10/11 bit counter PSEL from the paper
+        /************************Check MSB of PSEL******************************/
+        if ((PSEL >> (PSEL_W - 1)) & 1) {    // Checking MSB of PSEL counter
+		    cout << "SET - BIP" << PSEL << endl;
+            //std::cin.ignore();
+            /************************If SET ------   512 and above  BIP ***************************/
+            if (randP <= bipThrottle) {
+               sets[set].moveToHead(blk);      //  Shifting new inserted block to MRU location
+            } 
+            else {
+                sets[set].insertLRU(blk);   //  Shifting new inserted block to LRU location
+            }
 
-    
-    double randP= ((double)rand())/(RAND_MAX);
 
-    // cout << "Associativity" << assoc << "BIP" << " Random "<< randP << &endl;
-    if (randP <= dipThrottle) {
-        // cout << "Calling Move to Head from Insert : Traditional LRU" <<&endl;
-    } else {
-        // cout << "Calling Move to Tail from Insert : LIP" <<&endl;
-        //sets[set].blks[assoc-1]=blk;  
-    }
+        } 
+        else {
+		    /************************If SET ------   0 to 511  LRU  ***************************/
+            cout << "NOT SET - LRU" << PSEL << endl;
+            sets[set].moveToHead(blk);      //  Shifting new inserted block to MRU location            
+        }
+
+    } 
+
 }
 
 void
@@ -277,11 +296,6 @@ DIP::invalidate(BlkType *blk)
     // should be evicted before valid blocks
     unsigned set = blk->set;
     sets[set].moveToTail(blk);
-    // if (set == 0x390)
-    // {
-    //     printSet(set);
-    //     cout << "Invalidate : " << regenerateBlkAddr(blk->tag, blk->set) << endl;
-    // }
 }
 
 void

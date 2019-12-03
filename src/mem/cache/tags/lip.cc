@@ -156,31 +156,31 @@ LIP::findBlock(Addr addr) const
 LIP::BlkType*
 LIP::findVictim(Addr addr, PacketList &writebacks)
 {
-    cout << "Finding Victim " << " : Block Addr " << addr << endl;
     unsigned set = extractSet(addr);
+    // cout << "Finding Victim " << " : Block Addr " << addr << endl;
     // grab a replacement candidate
-    BlkType *blk;
-    bool invalidVictimFound = false;
-    for (size_t j = assoc-1; j >= 0; j--)
-    {
-        blk = sets[set].blks[j];
-        if (!blk->isValid())
-        {
-            invalidVictimFound = true;
-            break;
-        }
-    }
-    if (!invalidVictimFound)
-    {
-        blk = sets[set].blks[assoc-1];
-    }
-    
-    printSet(set);
-    
+    BlkType *blk = sets[set].blks[assoc-1];
+
     if (blk->isValid()) {
         DPRINTF(CacheRepl, "set %x: selecting blk %x for replacement\n",
                 set, regenerateBlkAddr(blk->tag, set));
     }
+    // bool invalidVictimFound = false;
+    int j;
+
+    for (j = assoc-1; j >= 0; j--)
+    {
+        // cout << "travesring set @ " << j << endl ;
+        blk = sets[set].blks[j];
+        if (!blk->isValid())
+        {
+            // cout << "Block " << j << " invalid " << endl;
+            sets[set].moveToTail(blk);
+            break;
+        }
+    }
+    // cout << "Here .. " << endl;
+    blk = sets[set].blks[assoc-1];
     return blk;
 }
 
@@ -192,6 +192,7 @@ LIP::insertBlock(Addr addr, BlkType *blk, int master_id)
         blk->isTouched = true;
         if (!warmedUp && tagsInUse.value() >= warmupBound) {
             warmedUp = true;
+            cout << "Cache is warmed up here" << endl;
             warmupCycle = curTick();
         }
     }
