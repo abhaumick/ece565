@@ -24,10 +24,10 @@ cacheOptions="--l1d_size=16kB --l1i_size=16kB --l2_size=1MB --l2_assoc=16"
 
 ## Runtime Options
 
-warmupCount="500000000"
+warmupCount="1000000000"
 
 fastFwdCount="1000000000"
-standardSwitch="500000000"
+standardSwitch="1000000000"
 
 ## Project Options
 
