@@ -75,10 +75,10 @@ LRUVictim::LRUVictim(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
     warmupBound = numSets * assoc;
 
     sets = new CacheSet[numSets];
-    blks = new BlkType[numSets * assoc];
+    blks = new BlkType[(numSets * assoc)+victimSize];
     // allocate data storage in one big chunk
-    numBlocks = numSets * assoc;
-    dataBlks = new uint8_t[numBlocks * blkSize];
+    numBlocks = (numSets * assoc)+victimSize;
+    dataBlks = new uint8_t[(numBlocks+victimSize) * blkSize];
 
     unsigned blkIndex = 0;       // index into blks array
     for (unsigned i = 0; i < numSets; ++i) {
@@ -126,7 +126,7 @@ LRUVictim::LRUVictim(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
         {
             BlkType *blk = &victimCacheBlks[j];
             blk->data = &victimDataBlks[blkSize*j];
-
+            //++blkIndex;
             blk->invalidate();
 
             // Setting the tag to j is just to prevent long chains in the hash
@@ -153,13 +153,33 @@ LRUVictim::~LRUVictim()
 LRUVictim::BlkType*
 LRUVictim::accessBlock(Addr addr, int &lat, int master_id)
 {
-    //cout << "VictimCache : accessBlock : Addr " << addr << endl;
-    Addr tag = extractTag(addr);
+   Addr tag = extractTag(addr);
     unsigned set = extractSet(addr);
     BlkType *blk = sets[set].findBlk(tag);
     lat = hitLatency;
+  
+  if((blk == NULL) && (victimSize != 0)){
+	for (int i = 0; i < victimSize; ++i) {
+		if ((victimCache->blks[i]->tag == tag) && 
+        (victimCache->blks[i]->set == set) 
+        && (((victimCache->blks[i]->status) & 0x01) !=0)){
+		
+            blk = victimCache->blks[i];
+            victimCache->blks[i] = sets[set].blks[assoc-1];
+            victimCache->moveToHead(victimCache->blks[i]);
+            sets[set].blks[assoc-1] = blk;
+            //hitLatency+=victimLatency;
+            break;
+		}
+		
+	}
+  }
+
+
+
+
+
     if (blk != NULL) {
-        //cout << "VictimCache : accessBlock : Block found in cache : Addr " << addr << endl;
         // move this block to head of the MRU list
         sets[set].moveToHead(blk);
         DPRINTF(CacheRepl, "set %x: moving blk %x to MRU\n",
@@ -170,57 +190,6 @@ LRUVictim::accessBlock(Addr addr, int &lat, int master_id)
         }
         blk->refCount += 1;
     }
-    else if (victimSize != 0)
-    {
-        cout << "VictimCache : accessBlock : Searching in Victim : Addr " << addr << endl;
-        for (size_t j = 0; j < victimSize; j++)
-        {
-            CacheBlk *vcBlk = victimCache->blks[j];
-            if (vcBlk->tag == tag && vcBlk->set == set && vcBlk->isValid())
-            {
-                cout << "  Found in Victim : Addr " << addr << endl;  
-                //CacheBlk victimBlk = sets[set].blks[assoc-1];
-                CacheBlk temp = *victimCache->blks[j];
-                temp.data = new uint8_t[blkSize]; 
-                std::memcpy(temp.data,victimCache->blks[j]->data, blkSize);
-                temp.srcMasterId= victimCache->blks[j]->srcMasterId;
-                printSet(set);
-                printVictimCache();
-
-                //cout << "  Set and Victim AFTER SWAP " << endl;
-                //  Insert evicted block into victim cache
-                *victimCache->blks[j] = *sets[set].blks[assoc-1];
-                victimCache->blks[j]->data = new uint8_t[blkSize]; 
-                std::memcpy(victimCache->blks[j]->data, sets[set].blks[assoc-1]->data,blkSize);
-                victimCache->blks[j]->srcMasterId = sets[set].blks[assoc-1]->srcMasterId;
-                //printVictimCache();
-                victimCache->moveToHead(victimCache->blks[j]);
-                //printVictimCache();
-                
-                //  Insert victimcache block back into cache
-                *sets[set].blks[assoc-1] = temp;
-                sets[set].blks[assoc-1]->data = new uint8_t[blkSize];
-                std::memcpy(sets[set].blks[assoc-1]->data,temp.data, blkSize);
-                sets[set].blks[assoc-1]->srcMasterId=temp.srcMasterId;
-                sets[set].moveToHead(sets[set].blks[assoc-1]);
-                blk=sets[set].findBlk(tag);
-                cout << "  here" << addr << endl;  
-                lat = hitLatency + victimHitLatency;
-                cout << "  here" << addr << endl; 
-                printSet(set);
-                printVictimCache();
-
-                 if (blk->whenReady > curTick()
-                        && blk->whenReady - curTick() > hitLatency) {
-                    lat = blk->whenReady - curTick();
-                }
-                blk->refCount += 1;
-                cout << "  here" << addr << endl;  
-                break;
-            }
-            
-        }
-    } 
     return blk;
 }
 
@@ -238,42 +207,30 @@ LRUVictim::findBlock(Addr addr) const
 LRUVictim::BlkType*
 LRUVictim::findVictim(Addr addr, PacketList &writebacks)
 {
-    cout << "VictimCache : findVictim Addr" << addr << endl;
     unsigned set = extractSet(addr);
     // grab a replacement candidate
-    CacheBlk *blk = sets[set].blks[assoc-1];
+    BlkType *blk = sets[set].blks[assoc-1];
 
     if (blk->isValid()) {
         DPRINTF(CacheRepl, "set %x: selecting blk %x for replacement\n",
                 set, regenerateBlkAddr(blk->tag, set));
+        if(victimSize != 0){
+            BlkType *tmp = victimCache->blks[victimCache->assoc-1];
+            victimCache->blks[victimCache->assoc-1] = blk;
+            victimCache->blks[victimCache->assoc-1]->tag = blk->tag;
+            victimCache->blks[victimCache->assoc-1]->set = set;
+            victimCache->moveToHead(blk);
+            sets[set].blks[assoc-1] = tmp;
+            blk = tmp;
+		}
     }
-
-    if (victimSize != 0)
-    {
-        printSet(set);
-        printVictimCache();
-
-        //CacheBlk *tmp = victimCache->blks[victimCache->assoc-1];
-	    *victimCache->blks[victimCache->assoc-1] = *sets[set].blks[assoc-1]; 
-        victimCache->blks[victimCache->assoc-1]->data = new uint8_t[blkSize]; 
-
-        std::memcpy(victimCache->blks[victimCache->assoc-1]->data,sets[set].blks[assoc-1]->data, blkSize);
-        victimCache->blks[victimCache->assoc-1]->srcMasterId = sets[set].blks[assoc-1]->srcMasterId;
-	    /*victimCache->blks[victimCache->assoc-1]->tag = blk->tag;
-	    victimCache->blks[victimCache->assoc-1]->set = set;*/
-	    victimCache->moveToHead(victimCache->blks[victimCache->assoc-1]);
-
-        printVictimCache();
-    }
-
-    return  blk;
+    return blk;
 }
 
 void
 LRUVictim::insertBlock(Addr addr, BlkType *blk, int master_id)
 {
-    cout << "VictimCache " << victimCache->assoc << " : insertBlock Addr " << addr << endl;
-    if (!blk->isTouched) {
+       if (!blk->isTouched) {
         tagsInUse++;
         blk->isTouched = true;
         if (!warmedUp && tagsInUse.value() >= warmupBound) {
@@ -281,7 +238,7 @@ LRUVictim::insertBlock(Addr addr, BlkType *blk, int master_id)
             warmupCycle = curTick();
         }
     }
-    unsigned set = extractSet(addr);
+
     // If we're replacing a block that was previously valid update
     // stats for it. This can't be done in findBlock() because a
     // found block might not actually be replaced there if the
@@ -308,14 +265,8 @@ LRUVictim::insertBlock(Addr addr, BlkType *blk, int master_id)
     occupancies[master_id]++;
     blk->srcMasterId = master_id;
 
-    
-
-    //printSet(set);
+    unsigned set = extractSet(addr);
     sets[set].moveToHead(blk);
-
-    printSet(set);
-    printVictimCache();
-
 }
 
 void
