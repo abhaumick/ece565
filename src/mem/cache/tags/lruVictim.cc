@@ -114,7 +114,7 @@ LRUVictim::LRUVictim(unsigned _numSets, unsigned _blkSize, unsigned _assoc,
     {
         DPRINTF(CacheRepl, "Building VictimCache with %d block\n", victimSize);
         victimCacheBlks = new BlkType[victimSize];
-        victimHitLatency = 1;
+        victimLatency = 1;
 
         victimDataBlks = new uint8_t[victimSize * blkSize];
 
@@ -168,7 +168,7 @@ LRUVictim::accessBlock(Addr addr, int &lat, int master_id)
             victimCache->blks[i] = sets[set].blks[assoc-1];
             victimCache->moveToHead(victimCache->blks[i]);
             sets[set].blks[assoc-1] = blk;
-            //hitLatency+=victimLatency;
+            lat+=victimLatency;
             break;
 		}
 		

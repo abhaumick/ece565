@@ -84,10 +84,10 @@ class SimpleDRAM(AbstractMemory):
 
     # the amount of time in nanoseconds from issuing an activate command
     # to the data being available in the row buffer for a read/write
-    tRCD = Param.Latency("14ns", "RAS to CAS delay")
+    tRCD = Param.Latency("200ns", "RAS to CAS delay")
 
     # the time from issuing a read/write command to seeing the actual data
-    tCL = Param.Latency("14ns", "CAS latency")
+    tCL = Param.Latency("100ns", "CAS latency")
 
     # minimum time between a precharge and subsequent activate
     tRP = Param.Latency("14ns", "Row precharge time")

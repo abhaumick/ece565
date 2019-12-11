@@ -72,7 +72,7 @@ class LRUVictim : public BaseTags
     /** The number of blocks in victim cache. */
     const unsigned victimSize;
     /** The number of blocks in victim cache. */
-    unsigned victimHitLatency;
+    unsigned victimLatency;
 
     /** The cache sets. */
     CacheSet *sets;

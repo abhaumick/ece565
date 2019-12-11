@@ -44,6 +44,7 @@ class L2Cache(BaseCache):
     response_latency = '6ns'
     mshrs = 20
     tgts_per_mshr = 12
+    write_buffers = 128
 
 class PageTableWalkerCache(BaseCache):
     assoc = 2

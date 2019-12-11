@@ -96,7 +96,7 @@ class DerivO3CPU(BaseCPU):
     BTBEntries = Param.Unsigned(4096, "Number of BTB entries")
     BTBTagSize = Param.Unsigned(16, "Size of the BTB tags, in bits")
 
-    RASSize = Param.Unsigned(16, "RAS size")
+    RASSize = Param.Unsigned(32, "RAS size")
 
     LQEntries = Param.Unsigned(32, "Number of load queue entries")
     SQEntries = Param.Unsigned(32, "Number of store queue entries")
@@ -113,7 +113,7 @@ class DerivO3CPU(BaseCPU):
     numPhysIntRegs = Param.Unsigned(256, "Number of physical integer registers")
     numPhysFloatRegs = Param.Unsigned(256, "Number of physical floating point "
                                       "registers")
-    numIQEntries = Param.Unsigned(32, "Number of instruction queue entries")
+    numIQEntries = Param.Unsigned(40, "Number of instruction queue entries")
     numROBEntries = Param.Unsigned(192, "Number of reorder buffer entries")
 
     instShiftAmt = Param.Unsigned(2, "Number of bits to shift instructions by")
