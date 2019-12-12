@@ -78,14 +78,13 @@ listOfBenchmarks=(
                     "specrand_f"
                  )
 
-listOfVictimSize=(
-     1
-     2
-     4
-     8
-    12
-    16
-)
+## Project Options
+
+bipThrottle=(
+                1.00000       # LRU
+                0.03125       # BIP - LRU Prob = 0.03
+                0.00000       # LIP
+	        )
 
 
 for program in "${listOfBenchmarks[@]}"; do
@@ -94,16 +93,10 @@ for program in "${listOfBenchmarks[@]}"; do
 
     echo "Running $program"
 
-    for victimSize in "${listOfVictimSize[@]}"; do
+    for throttleValue in "${bipThrottle[@]}"; do
 
-        # L1 I Victim Cache
-   	    $gem5opt -d $folder/L1I_Victim/Size$victimSize/$program $pathToRunPy $options $cacheOptions -b $program --l1i_victim=$victimSize --standard-switch=$standardSwitch --maxinsts=$maxinsts --fast-forward=$fastFwdCount --warmup-insts=$warmupCount --at-instruction
-
-        # L1 D Victim Cache
-   	    $gem5opt -d $folder/L1D_Victim/Size$victimSize/$program $pathToRunPy $options $cacheOptions -b $program --l1d_victim=$victimSize --standard-switch=$standardSwitch --maxinsts=$maxinsts --fast-forward=$fastFwdCount --warmup-insts=$warmupCount --at-instruction
-
-        # L2 Victim Cache
-   	    $gem5opt -d $folder/L2_Victim/Size$victimSize/$program $pathToRunPy $options $cacheOptions -b $program --l2_victim=$victimSize --standard-switch=$standardSwitch --maxinsts=$maxinsts --fast-forward=$fastFwdCount --warmup-insts=$warmupCount --at-instruction
+        # BIP
+   	    $gem5opt -d $folder/BIP-$throttleValue/$program $pathToRunPy $options $cacheOptions -b $program --bip_throttle $throttle --standard-switch=$standardSwitch --maxinsts=$maxinsts --fast-forward=$fastFwdCount --warmup-insts=$warmupCount --at-instruction
 
     done 
 
