@@ -195,7 +195,7 @@ DIP::insertBlock(Addr addr, BlkType *blk, int master_id)
         if (!warmedUp && tagsInUse.value() >= warmupBound) {
             warmedUp = true;
             warmupCycle = curTick();
-            cout << "Cache is warmed up here" << endl;
+            cout << "-----------------------Cache is warmed up here-----------------------" << endl;
             std::cin.ignore();
         }
     }
@@ -239,7 +239,7 @@ DIP::insertBlock(Addr addr, BlkType *blk, int master_id)
         
         if(PSEL>=pow(2,PSEL_W)) 
             PSEL = pow(2,PSEL_W)-1;  //Preventing overflow
-        cout << PSEL<< endl;
+        // << PSEL<< endl;
     }
     else if (set % dipSetInterval == dipSetInterval -1 )
     {   
@@ -254,14 +254,14 @@ DIP::insertBlock(Addr addr, BlkType *blk, int master_id)
 
         if(PSEL<=0) 
             PSEL = 0;     //Preventing underflow
-        cout << PSEL<< endl;
+        //cout << PSEL<< endl;
     }
     else
     {
         //  Follower Sets Decided By MSB of 10/11 bit counter PSEL from the paper
         /************************Check MSB of PSEL******************************/
         if ((PSEL >> (PSEL_W - 1)) & 1) {    // Checking MSB of PSEL counter
-		    cout << "SET - BIP" << PSEL << endl;
+		    //cout << "SET - BIP" << PSEL << endl;
             //std::cin.ignore();
             /************************If SET ------   512 and above  BIP ***************************/
             if (randP <= bipThrottle) {
@@ -275,7 +275,7 @@ DIP::insertBlock(Addr addr, BlkType *blk, int master_id)
         } 
         else {
 		    /************************If SET ------   0 to 511  LRU  ***************************/
-            cout << "NOT SET - LRU" << PSEL << endl;
+            //cout << "NOT SET - LRU" << PSEL << endl;
             sets[set].moveToHead(blk);      //  Shifting new inserted block to MRU location            
         }
 
