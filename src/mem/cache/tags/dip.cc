@@ -196,7 +196,6 @@ DIP::insertBlock(Addr addr, BlkType *blk, int master_id)
             warmedUp = true;
             warmupCycle = curTick();
             cout << "-----------------------Cache is warmed up here-----------------------" << endl;
-            std::cin.ignore();
         }
     }
 
